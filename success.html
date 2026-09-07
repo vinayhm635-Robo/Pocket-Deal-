@@ -1,74 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Order Successful - Pocket Deal</title>
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Success | Pocket Deal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
+
+<header class="navbar">
+
+    <a href="index.html" class="logo">
+        <span>PD</span> Pocket Deal
+    </a>
+
+</header>
 
 <main class="success-page">
 
     <div class="success-card">
 
-        <div class="success-icon">
-            ✓
-        </div>
+        <div class="success-icon">✓</div>
 
-        <h1>
+        <h1 id="successTitle">
             Order Confirmed!
         </h1>
 
-        <p>
-            Thank you for shopping with Pocket Deal.
+        <p id="successText">
             Your order has been successfully placed.
         </p>
 
         <div class="order-number">
 
-            Order ID:
+            <small>Reference ID</small>
 
-            <strong id="orderId"></strong>
-
-        </div>
-
-        <div class="delivery-box">
-
-            🚚
-            <strong>
-                Estimated Delivery
+            <strong id="orderId">
+                PD000000
             </strong>
 
-            <br>
-
-            3–5 business days
-
         </div>
 
-        <a
-            href="products.html"
-            class="primary-btn">
-
+        <a href="products.html" class="btn-primary">
             Continue Shopping
-
         </a>
 
-        <a
-            href="index.html"
-            class="back-home">
-
-            Back to Home
-
+        <a href="index.html" class="continue">
+            Go to Home
         </a>
 
     </div>
@@ -76,6 +54,5 @@
 </main>
 
 <script src="script.js"></script>
-
 </body>
 </html>
