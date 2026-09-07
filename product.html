@@ -3,26 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Product - Pocket Deal</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header class="navbar">
-    <a href="index.html" class="logo"><span>PD</span> Pocket Deal</a>
+
+    <a href="index.html" class="logo">
+        <span>PD</span>
+        Pocket Deal
+    </a>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Shop</a>
         <a href="bulk.html">Bulk Deals</a>
-        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
+
+        <a href="cart.html">
+            Cart (<span id="cartCount">0</span>)
+        </a>
     </nav>
+
 </header>
 
-<section class="section">
-    <div id="productDetails" class="product-details"></div>
-</section>
+
+<main class="section">
+
+    <div id="productDetails" class="product-details">
+
+        <div class="loading">
+            Loading product...
+        </div>
+
+    </div>
+
+</main>
+
 
 <script src="script.js"></script>
+
 </body>
 </html>
