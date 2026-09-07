@@ -1,4 +1,15 @@
+/* =========================================================
+   POCKET DEAL
+   Main JavaScript
+   ========================================================= */
+
+
+/* =========================================================
+   PRODUCT DATA
+   ========================================================= */
+
 const products = [
+
     {
         id: 1,
         name: "Acer Aspire 5 Laptop",
@@ -6,8 +17,10 @@ const products = [
         price: 54999,
         oldPrice: 62999,
         icon: "💻",
-        description: "Powerful laptop for coding, study, office work and entertainment."
+        description:
+            "Powerful laptop for coding, study, office work and entertainment."
     },
+
     {
         id: 2,
         name: "HP 15 Laptop",
@@ -15,8 +28,10 @@ const products = [
         price: 58999,
         oldPrice: 67999,
         icon: "💻",
-        description: "Reliable laptop for everyday productivity and entertainment."
+        description:
+            "Reliable laptop for everyday productivity and entertainment."
     },
+
     {
         id: 3,
         name: "SmartPhone X1",
@@ -24,8 +39,10 @@ const products = [
         price: 18999,
         oldPrice: 22999,
         icon: "📱",
-        description: "Modern smartphone with excellent performance and camera."
+        description:
+            "Modern smartphone with excellent performance and camera."
     },
+
     {
         id: 4,
         name: "SmartPhone Pro Max",
@@ -33,8 +50,10 @@ const products = [
         price: 27999,
         oldPrice: 32999,
         icon: "📱",
-        description: "Premium smartphone with powerful performance."
+        description:
+            "Premium smartphone with powerful performance."
     },
+
     {
         id: 5,
         name: "Wireless Pro Headphones",
@@ -42,8 +61,10 @@ const products = [
         price: 2999,
         oldPrice: 4999,
         icon: "🎧",
-        description: "Comfortable wireless headphones with clear sound."
+        description:
+            "Comfortable wireless headphones with clear sound."
     },
+
     {
         id: 6,
         name: "BassX Bluetooth Headphones",
@@ -51,8 +72,10 @@ const products = [
         price: 1999,
         oldPrice: 3499,
         icon: "🎧",
-        description: "Deep bass and comfortable wireless listening."
+        description:
+            "Deep bass and comfortable wireless listening."
     },
+
     {
         id: 7,
         name: "Running Sports Shoes",
@@ -60,8 +83,10 @@ const products = [
         price: 2499,
         oldPrice: 3999,
         icon: "👟",
-        description: "Lightweight running shoes for daily workouts."
+        description:
+            "Lightweight running shoes for daily workouts."
     },
+
     {
         id: 8,
         name: "Urban Casual Shoes",
@@ -69,215 +94,342 @@ const products = [
         price: 1799,
         oldPrice: 2999,
         icon: "👟",
-        description: "Stylish casual shoes for everyday use."
+        description:
+            "Stylish casual shoes for everyday use."
     }
+
 ];
 
+
+/* =========================================================
+   COMMON FUNCTIONS
+   ========================================================= */
+
 function money(value) {
-    return "₹" + Number(value).toLocaleString("en-IN");
+
+    return "₹" +
+        Number(value || 0).toLocaleString("en-IN");
+
 }
+
 
 function getValue(id) {
-    const element = document.getElementById(id);
-    return element ? element.value.trim() : "";
+
+    const element =
+        document.getElementById(id);
+
+    return element ? element.value : "";
+
 }
+
 
 function setText(id, value) {
-    const element = document.getElementById(id);
+
+    const element =
+        document.getElementById(id);
 
     if (element) {
+
         element.textContent = value;
+
     }
+
 }
+
+
+/* =========================================================
+   CART
+   ========================================================= */
 
 function getCart() {
-    try {
-        const cart = JSON.parse(
-            localStorage.getItem("pocketDealCart")
-        );
 
-        return Array.isArray(cart) ? cart : [];
+    try {
+
+        return JSON.parse(
+            localStorage.getItem("pocketDealCart")
+        ) || [];
 
     } catch (error) {
+
         return [];
+
     }
+
 }
 
+
 function saveCart(cart) {
+
     localStorage.setItem(
         "pocketDealCart",
         JSON.stringify(cart)
     );
 
     updateCartCount();
+
 }
+
 
 function updateCartCount() {
 
     const cart = getCart();
 
-    const count = cart.reduce(
-        (total, item) =>
-            total + Number(item.quantity || 0),
-        0
-    );
+    const count =
+        cart.reduce(
+            (total, item) =>
+                total + Number(item.quantity || 1),
+            0
+        );
 
-    document
-        .querySelectorAll("#cartCount")
-        .forEach(element => {
-            element.textContent = count;
-        });
+    const element =
+        document.getElementById("cartCount");
+
+    if (element) {
+
+        element.textContent = count;
+
+    }
+
 }
 
-function addToCart(id) {
 
-    const product = products.find(
-        product => product.id === Number(id)
-    );
+/* =========================================================
+   ADD TO CART
+   ========================================================= */
+
+function addToCart(id, quantity = 1) {
+
+    const product =
+        products.find(
+            product => product.id === Number(id)
+        );
 
     if (!product) {
+
         alert("Product not found.");
+
         return;
+
     }
 
     const cart = getCart();
 
-    const existing = cart.find(
-        item => item.id === product.id
-    );
+    const existing =
+        cart.find(
+            item => item.id === product.id
+        );
 
     if (existing) {
-        existing.quantity =
-            Number(existing.quantity) + 1;
+
+        existing.quantity += Number(quantity);
+
     } else {
+
         cart.push({
+
             id: product.id,
-            quantity: 1
+
+            quantity: Number(quantity),
+
+            negotiatedPrice: null
+
         });
+
     }
 
     saveCart(cart);
 
     alert(
         product.name +
-        " added to your cart!"
+        " added to cart!"
     );
+
 }
+
+
+/* =========================================================
+   PRODUCT CARD
+   ========================================================= */
 
 function createProductCard(product) {
 
     return `
+
         <div class="product-card">
 
-            <a href="product.html?id=${product.id}">
-                <div class="product-image">
-                    ${product.icon}
-                </div>
-            </a>
+            <div class="product-icon">
+                ${product.icon}
+            </div>
 
             <div class="product-category">
                 ${product.category}
             </div>
 
-            <h3>${product.name}</h3>
+            <h3>
+                ${product.name}
+            </h3>
 
-            <div class="price">
-                ${money(product.price)}
+            <p class="product-description">
+                ${product.description}
+            </p>
 
-                <span class="old-price">
+            <div class="product-price">
+
+                <strong>
+                    ${money(product.price)}
+                </strong>
+
+                <span>
                     ${money(product.oldPrice)}
                 </span>
+
             </div>
 
-            <button
-                class="btn-primary"
-                onclick="addToCart(${product.id})"
-            >
-                Add to Cart
-            </button>
+            <div class="product-card-actions">
+
+                <a
+                    href="product.html?id=${product.id}"
+                    class="btn-secondary"
+                >
+                    View Product
+                </a>
+
+                <a
+                    href="negotiate.html?id=${product.id}"
+                    class="negotiate-small"
+                >
+                    🤝 Negotiate
+                </a>
+
+            </div>
 
         </div>
+
     `;
+
 }
 
-let currentCategory = "All";
 
-function filterCategory(category) {
-
-    currentCategory = category;
-
-    displayProducts();
-}
+/* =========================================================
+   DISPLAY PRODUCTS
+   ========================================================= */
 
 function displayProducts() {
 
     const container =
-        document.getElementById("productList");
+        document.getElementById("productsContainer");
 
     if (!container) return;
 
-    const searchElement =
+    const searchInput =
         document.getElementById("searchInput");
 
-    const search = searchElement
-        ? searchElement.value.toLowerCase().trim()
-        : "";
+    const search =
+        searchInput
+            ? searchInput.value.toLowerCase().trim()
+            : "";
 
-    const filtered = products.filter(product => {
+    const category =
+        localStorage.getItem(
+            "selectedCategory"
+        ) || "All";
 
-        const categoryMatch =
-            currentCategory === "All" ||
-            product.category === currentCategory;
+    let filtered =
+        products.filter(product => {
 
-        const searchMatch =
-            product.name
-                .toLowerCase()
-                .includes(search) ||
+            const matchesSearch =
+                product.name
+                    .toLowerCase()
+                    .includes(search) ||
 
-            product.category
-                .toLowerCase()
-                .includes(search);
+                product.category
+                    .toLowerCase()
+                    .includes(search);
 
-        return categoryMatch && searchMatch;
-    });
+            const matchesCategory =
+                category === "All" ||
+                product.category === category;
+
+            return (
+                matchesSearch &&
+                matchesCategory
+            );
+
+        });
 
     if (filtered.length === 0) {
 
         container.innerHTML = `
-            <div class="empty-cart">
-                <div class="empty-icon">🔎</div>
-                <h2>No products found</h2>
-                <p>Try another search.</p>
+
+            <div class="empty-state">
+
+                <h2>
+                    No products found
+                </h2>
+
+                <p>
+                    Try another search.
+                </p>
+
             </div>
+
         `;
 
         return;
+
     }
 
     container.innerHTML =
         filtered
             .map(createProductCard)
             .join("");
+
 }
+
 
 function displayHomeProducts() {
 
     const container =
-        document.getElementById("homeProducts");
+        document.getElementById(
+            "homeProducts"
+        );
 
     if (!container) return;
 
     container.innerHTML =
         products
-            .slice(0, 4)
+            .slice(0, 8)
             .map(createProductCard)
             .join("");
+
 }
+
+
+function filterCategory(category) {
+
+    localStorage.setItem(
+        "selectedCategory",
+        category
+    );
+
+    displayProducts();
+
+}
+
+
+/* =========================================================
+   PRODUCT DETAILS
+   ========================================================= */
+
+let currentProductId = null;
+
 
 function displayProductDetails() {
 
     const container =
-        document.getElementById("productDetails");
+        document.getElementById(
+            "productDetails"
+        );
 
     if (!container) return;
 
@@ -289,6 +441,8 @@ function displayProductDetails() {
     const id =
         Number(params.get("id"));
 
+    currentProductId = id;
+
     const product =
         products.find(
             item => item.id === id
@@ -297,8 +451,17 @@ function displayProductDetails() {
     if (!product) {
 
         container.innerHTML = `
-            <div class="empty-cart">
-                <h2>Product not found</h2>
+
+            <div class="empty-state">
+
+                <h2>
+                    Product Not Found
+                </h2>
+
+                <p>
+                    The product you are looking for
+                    does not exist.
+                </p>
 
                 <a
                     href="products.html"
@@ -306,61 +469,165 @@ function displayProductDetails() {
                 >
                     Back to Shop
                 </a>
+
             </div>
+
         `;
 
         return;
+
     }
+
+    const discount =
+        Math.round(
+            (
+                (product.oldPrice -
+                    product.price) /
+                product.oldPrice
+            ) * 100
+        );
 
     container.innerHTML = `
 
-        <div class="large-image">
-            ${product.icon}
+        <div class="product-detail-image">
+
+            <div class="big-product-icon">
+                ${product.icon}
+            </div>
+
         </div>
 
-        <div>
+
+        <div class="product-detail-info">
 
             <div class="product-category">
                 ${product.category}
             </div>
 
-            <h1>${product.name}</h1>
+            <h1>
+                ${product.name}
+            </h1>
 
-            <div class="price">
-                ${money(product.price)}
-
-                <span class="old-price">
-                    ${money(product.oldPrice)}
+            <div class="rating">
+                ⭐ 4.5
+                <span>
+                    Excellent choice
                 </span>
             </div>
 
-            <p class="description">
+            <p class="detail-description">
                 ${product.description}
             </p>
 
-            <button
-                class="btn-primary"
-                onclick="addToCart(${product.id})"
-            >
-                Add to Cart
-            </button>
+            <div class="detail-price">
 
-            <a
-                href="bulk.html?product=${product.id}"
-                class="btn-secondary"
-                style="margin-left:8px;"
-            >
-                Request Bulk Deal
-            </a>
+                <strong>
+                    ${money(product.price)}
+                </strong>
+
+                <span>
+                    ${money(product.oldPrice)}
+                </span>
+
+                <b>
+                    ${discount}% OFF
+                </b>
+
+            </div>
+
+
+            <div class="deal-highlight">
+
+                <div>
+                    🤖
+                </div>
+
+                <div>
+
+                    <strong>
+                        Want a better price?
+                    </strong>
+
+                    <p>
+                        Bid your own price and let
+                        Pocket Deal AI negotiate.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="product-actions">
+
+                <button
+                    class="btn-primary"
+                    onclick="addToCart(${product.id})"
+                >
+                    🛒 Add to Cart
+                </button>
+
+
+                <a
+                    href="negotiate.html?id=${product.id}"
+                    class="btn-negotiate"
+                >
+                    🤝 Negotiate Price
+                </a>
+
+
+                <a
+                    href="bulk.html?product=${product.id}"
+                    class="btn-secondary"
+                >
+                    📦 Bulk Deal
+                </a>
+
+            </div>
+
+
+            <div class="feature-row">
+
+                <div>
+                    🚚
+                    <span>
+                        Fast Delivery
+                    </span>
+                </div>
+
+                <div>
+                    🔒
+                    <span>
+                        Secure Payment
+                    </span>
+                </div>
+
+                <div>
+                    🤝
+                    <span>
+                        AI Negotiation
+                    </span>
+                </div>
+
+            </div>
 
         </div>
+
     `;
+
 }
+
+
+/* =========================================================
+   CART DISPLAY
+   ========================================================= */
 
 function displayCart() {
 
     const container =
-        document.getElementById("cartItems");
+        document.getElementById(
+            "cartContainer"
+        );
 
     if (!container) return;
 
@@ -369,16 +636,19 @@ function displayCart() {
     if (cart.length === 0) {
 
         container.innerHTML = `
-            <div class="empty-cart">
+
+            <div class="empty-state">
 
                 <div class="empty-icon">
                     🛒
                 </div>
 
-                <h2>Your cart is empty</h2>
+                <h2>
+                    Your cart is empty
+                </h2>
 
                 <p>
-                    Add products to your cart.
+                    Add some products to continue.
                 </p>
 
                 <a
@@ -389,113 +659,143 @@ function displayCart() {
                 </a>
 
             </div>
+
         `;
 
-        setText("subtotal", "₹0");
-        setText("cartTotal", "₹0");
+        updateCartTotal();
 
         return;
-    }
 
-    let subtotal = 0;
+    }
 
     container.innerHTML =
         cart.map(item => {
 
             const product =
                 products.find(
-                    p => p.id === Number(item.id)
+                    p => p.id === item.id
                 );
 
             if (!product) return "";
 
-            const quantity =
-                Number(item.quantity || 1);
-
-            subtotal +=
-                product.price * quantity;
+            const price =
+                item.negotiatedPrice ||
+                product.price;
 
             return `
 
                 <div class="cart-item">
 
-                    <div class="cart-image">
+                    <div class="cart-product-icon">
                         ${product.icon}
                     </div>
 
-                    <div>
+                    <div class="cart-product-info">
 
                         <h3>
                             ${product.name}
                         </h3>
 
                         <p>
-                            ${money(product.price)}
+                            ${item.negotiatedPrice
+                                ? "🤝 Negotiated Price"
+                                : money(product.price)}
                         </p>
-
-                        <div class="qty-controls">
-
-                            <button
-                                onclick="changeQuantity(
-                                    ${product.id}, -1
-                                )"
-                            >
-                                −
-                            </button>
-
-                            <strong>
-                                ${quantity}
-                            </strong>
-
-                            <button
-                                onclick="changeQuantity(
-                                    ${product.id}, 1
-                                )"
-                            >
-                                +
-                            </button>
-
-                        </div>
 
                     </div>
 
-                    <div>
-
-                        <strong>
-                            ${money(
-                                product.price *
-                                quantity
-                            )}
-                        </strong>
-
-                        <br>
+                    <div class="quantity-control">
 
                         <button
-                            class="remove-btn"
-                            onclick="removeFromCart(
-                                ${product.id}
+                            onclick="changeQuantity(
+                                ${product.id},
+                                -1
                             )"
                         >
-                            Remove
+                            −
+                        </button>
+
+                        <span>
+                            ${item.quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(
+                                ${product.id},
+                                1
+                            )"
+                        >
+                            +
                         </button>
 
                     </div>
 
+                    <strong>
+                        ${money(
+                            price *
+                            item.quantity
+                        )}
+                    </strong>
+
+                    <button
+                        class="remove-btn"
+                        onclick="removeFromCart(
+                            ${product.id}
+                        )"
+                    >
+                        🗑️
+                    </button>
+
                 </div>
+
             `;
 
         }).join("");
 
-    setText(
-        "subtotal",
-        money(subtotal)
-    );
+    updateCartTotal();
 
-    setText(
-        "cartTotal",
-        money(subtotal)
-    );
 }
+
+
+function updateCartTotal() {
+
+    const cart = getCart();
+
+    let total = 0;
+
+    cart.forEach(item => {
+
+        const product =
+            products.find(
+                p => p.id === item.id
+            );
+
+        if (!product) return;
+
+        const price =
+            item.negotiatedPrice ||
+            product.price;
+
+        total +=
+            price *
+            Number(item.quantity || 1);
+
+    });
+
+    const element =
+        document.getElementById(
+            "cartTotal"
+        );
+
+    if (element) {
+
+        element.textContent =
+            money(total);
+
+    }
+
+}
+
 
 function changeQuantity(id, change) {
 
@@ -503,40 +803,46 @@ function changeQuantity(id, change) {
 
     const item =
         cart.find(
-            product =>
-                product.id === Number(id)
+            item => item.id === Number(id)
         );
 
     if (!item) return;
 
-    item.quantity =
-        Number(item.quantity || 1) +
-        Number(change);
+    item.quantity += change;
 
     if (item.quantity <= 0) {
 
-        removeFromCart(id);
+        const index =
+            cart.indexOf(item);
 
-        return;
+        cart.splice(index, 1);
+
     }
 
     saveCart(cart);
 
     displayCart();
+
 }
+
 
 function removeFromCart(id) {
 
     const cart =
         getCart().filter(
-            item =>
-                item.id !== Number(id)
+            item => item.id !== Number(id)
         );
 
     saveCart(cart);
 
     displayCart();
+
 }
+
+
+/* =========================================================
+   CHECKOUT
+   ========================================================= */
 
 function checkCartBeforeCheckout() {
 
@@ -544,13 +850,18 @@ function checkCartBeforeCheckout() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is empty!");
+        alert(
+            "Your cart is empty."
+        );
 
         return false;
+
     }
 
     return true;
+
 }
+
 
 function displayCheckout() {
 
@@ -563,14 +874,6 @@ function displayCheckout() {
 
     const cart = getCart();
 
-    if (cart.length === 0) {
-
-        window.location.href =
-            "cart.html";
-
-        return;
-    }
-
     let total = 0;
 
     container.innerHTML =
@@ -578,31 +881,33 @@ function displayCheckout() {
 
             const product =
                 products.find(
-                    p => p.id === Number(item.id)
+                    p => p.id === item.id
                 );
 
             if (!product) return "";
 
-            const quantity =
-                Number(item.quantity || 1);
+            const price =
+                item.negotiatedPrice ||
+                product.price;
 
-            total +=
-                product.price * quantity;
+            const itemTotal =
+                price *
+                item.quantity;
+
+            total += itemTotal;
 
             return `
 
-                <div class="summary-row">
+                <div class="checkout-item">
 
                     <span>
+                        ${product.icon}
                         ${product.name}
-                        × ${quantity}
+                        × ${item.quantity}
                     </span>
 
                     <strong>
-                        ${money(
-                            product.price *
-                            quantity
-                        )}
+                        ${money(itemTotal)}
                     </strong>
 
                 </div>
@@ -615,102 +920,30 @@ function displayCheckout() {
         "checkoutTotal",
         money(total)
     );
+
 }
+
+
+/* =========================================================
+   PAYMENT
+   ========================================================= */
 
 function goToPayment(event) {
 
-    event.preventDefault();
-
-    const cart = getCart();
-
-    if (cart.length === 0) {
-
-        alert("Your cart is empty!");
-
-        window.location.href =
-            "cart.html";
-
-        return;
+    if (event) {
+        event.preventDefault();
     }
 
-    const name =
-        getValue("name");
-
-    const email =
-        getValue("email");
-
-    const phone =
-        getValue("phone");
-
-    const address =
-        getValue("address");
-
-    const city =
-        getValue("city");
-
-    const pincode =
-        getValue("pincode");
-
-    if (
-        !name ||
-        !email ||
-        !phone ||
-        !address ||
-        !city ||
-        !pincode
-    ) {
-
-        alert(
-            "Please fill all delivery details."
-        );
-
+    if (!checkCartBeforeCheckout())
         return;
-    }
-
-    if (!/^[0-9]{10}$/.test(phone)) {
-
-        alert(
-            "Enter a valid 10 digit phone number."
-        );
-
-        return;
-    }
-
-    if (!/^[0-9]{6}$/.test(pincode)) {
-
-        alert(
-            "Enter a valid 6 digit PIN code."
-        );
-
-        return;
-    }
-
-    const customer = {
-        name,
-        email,
-        phone,
-        address,
-        city,
-        pincode
-    };
-
-    localStorage.setItem(
-        "pocketDealCustomer",
-        JSON.stringify(customer)
-    );
 
     window.location.href =
         "payment.html";
+
 }
 
+
 function displayPaymentTotal() {
-
-    const element =
-        document.getElementById(
-            "paymentTotal"
-        );
-
-    if (!element) return;
 
     const cart = getCart();
 
@@ -720,21 +953,28 @@ function displayPaymentTotal() {
 
         const product =
             products.find(
-                p => p.id === Number(item.id)
+                p => p.id === item.id
             );
 
-        if (product) {
+        if (!product) return;
 
-            total +=
-                product.price *
-                Number(item.quantity || 1);
-        }
+        const price =
+            item.negotiatedPrice ||
+            product.price;
+
+        total +=
+            price *
+            item.quantity;
 
     });
 
-    element.textContent =
-        money(total);
+    setText(
+        "paymentTotal",
+        money(total)
+    );
+
 }
+
 
 function placeOrder() {
 
@@ -742,70 +982,17 @@ function placeOrder() {
 
     if (cart.length === 0) {
 
-        alert("Your cart is empty!");
-
-        window.location.href =
-            "cart.html";
-
-        return;
-    }
-
-    const customer =
-        localStorage.getItem(
-            "pocketDealCustomer"
-        );
-
-    if (!customer) {
-
         alert(
-            "Please complete your delivery details first."
+            "Your cart is empty."
         );
-
-        window.location.href =
-            "checkout.html";
 
         return;
+
     }
-
-    const selected =
-        document.querySelector(
-            'input[name="payment"]:checked'
-        );
-
-    const paymentMethod =
-        selected
-            ? selected.value
-            : "UPI";
-
-    const orderId =
-        "PD" +
-        Date.now()
-            .toString()
-            .slice(-8);
-
-    const order = {
-
-        orderId,
-
-        paymentMethod,
-
-        customer:
-            JSON.parse(customer),
-
-        cart,
-
-        date:
-            new Date().toISOString()
-    };
-
-    localStorage.setItem(
-        "pocketDealOrder",
-        JSON.stringify(order)
-    );
 
     const button =
-        document.querySelector(
-            ".payment-card .btn-primary"
+        document.getElementById(
+            "paymentButton"
         );
 
     if (button) {
@@ -813,23 +1000,68 @@ function placeOrder() {
         button.disabled = true;
 
         button.textContent =
-            "Processing...";
+            "Processing Payment...";
+
     }
 
-    setTimeout(() => {
+    setTimeout(
+        () => {
 
-        localStorage.removeItem(
-            "pocketDealCart"
-        );
+            localStorage.setItem(
+                "pocketDealOrder",
+                JSON.stringify({
 
-        updateCartCount();
+                    orderId:
+                        "PD" +
+                        Date.now(),
 
-        window.location.href =
-            "success.html?order=" +
-            encodeURIComponent(orderId);
+                    items: cart,
 
-    }, 3000);
+                    date:
+                        new Date().toISOString()
+
+                })
+            );
+
+            localStorage.removeItem(
+                "pocketDealCart"
+            );
+
+            window.location.href =
+                "success.html";
+
+        },
+        3000
+    );
+
 }
+
+
+/* =========================================================
+   BULK DEAL
+   ========================================================= */
+
+function getBulkDiscount(quantity) {
+
+    quantity =
+        Number(quantity);
+
+    if (quantity >= 50)
+        return 20;
+
+    if (quantity >= 25)
+        return 15;
+
+    if (quantity >= 10)
+        return 10;
+
+    if (quantity >= 5)
+        return 5;
+
+    return 0;
+
+}
+
 
 function populateBulkProducts() {
 
@@ -840,44 +1072,35 @@ function populateBulkProducts() {
 
     if (!select) return;
 
+    select.innerHTML = `
+
+        <option value="">
+            Select Product
+        </option>
+
+    `;
+
     products.forEach(product => {
 
-        const option =
-            document.createElement(
-                "option"
-            );
+        select.innerHTML += `
 
-        option.value =
-            product.id;
+            <option value="${product.id}">
+                ${product.name}
+                - ${money(product.price)}
+            </option>
 
-        option.textContent =
-            product.icon +
-            " " +
-            product.name +
-            " — " +
-            money(product.price);
+        `;
 
-        select.appendChild(option);
     });
 
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    const productId =
-        Number(params.get("product"));
-
-    if (productId) {
-
-        select.value =
-            String(productId);
-    }
 }
+
 
 function submitBulkRequest(event) {
 
-    event.preventDefault();
+    if (event) {
+        event.preventDefault();
+    }
 
     const productId =
         Number(
@@ -889,37 +1112,14 @@ function submitBulkRequest(event) {
             getValue("bulkQuantity")
         );
 
-    const name =
-        getValue("bulkName");
-
-    const email =
-        getValue("bulkEmail");
-
-    const phone =
-        getValue("bulkPhone");
-
-    const location =
-        getValue("bulkLocation");
-
-    const message =
-        getValue("bulkMessage");
-
-    if (quantity < 5) {
+    if (!productId || quantity < 1) {
 
         alert(
-            "Bulk orders require a minimum quantity of 5."
+            "Please select a product and quantity."
         );
 
         return;
-    }
 
-    if (!/^[0-9]{10}$/.test(phone)) {
-
-        alert(
-            "Enter a valid 10 digit phone number."
-        );
-
-        return;
     }
 
     const product =
@@ -927,209 +1127,464 @@ function submitBulkRequest(event) {
             p => p.id === productId
         );
 
-    if (!product) {
+    const discount =
+        getBulkDiscount(quantity);
 
-        alert(
-            "Please select a product."
+    const finalPrice =
+        Math.round(
+            product.price *
+            (1 - discount / 100)
         );
 
-        return;
+    const total =
+        finalPrice *
+        quantity;
+
+    const result =
+        document.getElementById(
+            "bulkResult"
+        );
+
+    if (result) {
+
+        result.innerHTML = `
+
+            <div class="deal-success">
+
+                <h3>
+                    🎉 Bulk Deal Available
+                </h3>
+
+                <p>
+                    ${product.name}
+                </p>
+
+                <p>
+                    Quantity:
+                    <strong>
+                        ${quantity}
+                    </strong>
+                </p>
+
+                <p>
+                    Discount:
+                    <strong>
+                        ${discount}%
+                    </strong>
+                </p>
+
+                <p>
+                    Negotiated Price:
+                    <strong>
+                        ${money(finalPrice)}
+                    </strong>
+                    each
+                </p>
+
+                <p>
+                    Total:
+                    <strong>
+                        ${money(total)}
+                    </strong>
+                </p>
+
+            </div>
+
+        `;
+
     }
 
-    let discount = 0;
-
-    if (quantity >= 50) {
-        discount = 20;
-    }
-    else if (quantity >= 25) {
-        discount = 15;
-    }
-    else if (quantity >= 10) {
-        discount = 10;
-    }
-    else {
-        discount = 5;
-    }
-
-    const requestId =
-        "BULK" +
-        Date.now()
-            .toString()
-            .slice(-7);
-
-    const request = {
-
-        requestId,
-
-        product:
-            product.name,
-
-        productId,
-
-        quantity,
-
-        customer: {
-
-            name,
-            email,
-            phone,
-            location,
-            message
-        },
-
-        estimatedDiscount:
-            discount + "%",
-
-        date:
-            new Date().toISOString()
-    };
-
-    localStorage.setItem(
-        "pocketDealBulkRequest",
-        JSON.stringify(request)
-    );
-
-    window.location.href =
-        "success.html?bulk=" +
-        encodeURIComponent(requestId);
 }
+
+
+/* =========================================================
+   LOGIN
+   ========================================================= */
 
 function loginUser(event) {
 
-    event.preventDefault();
-
-    const email =
-        getValue("loginEmail");
-
-    const password =
-        getValue("loginPassword");
-
-    if (!email || !password) {
-
-        alert(
-            "Please enter your login details."
-        );
-
-        return;
+    if (event) {
+        event.preventDefault();
     }
+
+    const name =
+        getValue("name") ||
+        getValue("username") ||
+        "Pocket Deal User";
 
     localStorage.setItem(
         "pocketDealUser",
-        JSON.stringify({
-            email
-        })
+        name
     );
-
-    alert("Login successful!");
 
     window.location.href =
         "index.html";
+
 }
+
 
 function googleLogin() {
 
-    alert(
-        "Google Login demo. Real Google authentication requires Firebase or another authentication service."
+    localStorage.setItem(
+        "pocketDealUser",
+        "Google User"
     );
+
+    window.location.href =
+        "index.html";
+
 }
+
+
+/* =========================================================
+   SUCCESS PAGE
+   ========================================================= */
 
 function displaySuccess() {
 
-    const orderElement =
+    const orderId =
         document.getElementById(
             "orderId"
         );
 
-    if (!orderElement) return;
+    if (!orderId) return;
+
+    const order =
+        JSON.parse(
+            localStorage.getItem(
+                "pocketDealOrder"
+            )
+        );
+
+    if (order) {
+
+        orderId.textContent =
+            order.orderId;
+
+    }
+
+}
+
+
+/* =========================================================
+   NEGOTIATION
+   ========================================================= */
+
+let currentNegotiationProduct = null;
+
+let currentSellerOffer = 0;
+
+let currentCustomerOffer = 0;
+
+let currentNegotiationQuantity = 1;
+
+
+/* ---------------------------------------------------------
+   GET NEGOTIATION PRODUCT
+--------------------------------------------------------- */
+
+function getNegotiationProduct() {
 
     const params =
         new URLSearchParams(
             window.location.search
         );
 
-    const bulkId =
-        params.get("bulk");
+    const id =
+        Number(params.get("id"));
 
-    if (bulkId) {
+    return products.find(
+        product => product.id === id
+    );
 
-        setText(
-            "successTitle",
-            "Bulk Request Submitted!"
-        );
-
-        setText(
-            "successText",
-            "Your bulk deal request has been received."
-        );
-
-        orderElement.textContent =
-            bulkId;
-
-        return;
-    }
-
-    let orderId =
-        params.get("order");
-
-    if (!orderId) {
-
-        const savedOrder =
-            localStorage.getItem(
-                "pocketDealOrder"
-            );
-
-        if (savedOrder) {
-
-            try {
-
-                const order =
-                    JSON.parse(savedOrder);
-
-                orderId =
-                    order.orderId;
-
-            } catch (error) {
-
-                console.log(
-                    "Order data error"
-                );
-            }
-        }
-    }
-
-    if (!orderId) {
-
-        orderId =
-            "PD" +
-            Date.now()
-                .toString()
-                .slice(-8);
-    }
-
-    orderElement.textContent =
-        orderId;
 }
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
 
-        updateCartCount();
+/* ---------------------------------------------------------
+   LOAD NEGOTIATION PAGE
+--------------------------------------------------------- */
 
-        displayHomeProducts();
+function loadNegotiationPage() {
 
-        displayProducts();
+    const info =
+        document.getElementById(
+            "negotiationProductInfo"
+        );
 
-        displayProductDetails();
+    if (!info) return;
 
-        displayCart();
+    const product =
+        getNegotiationProduct();
 
-        displayCheckout();
+    if (!product) {
 
-        displayPaymentTotal();
+        info.innerHTML = `
 
-        populateBulkProducts();
+            <h2>
+                Product Not Found
+            </h2>
 
-        displaySuccess();
+            <a
+                href="products.html"
+                class="btn-primary"
+            >
+                Back to Shop
+            </a>
+
+        `;
+
+        return;
+
     }
-);
+
+    currentNegotiationProduct =
+        product;
+
+    const image =
+        document.getElementById(
+            "negotiationProductImage"
+        );
+
+    if (image) {
+
+        image.textContent =
+            product.icon;
+
+    }
+
+    info.innerHTML = `
+
+        <div class="product-category">
+            ${product.category}
+        </div>
+
+        <h2>
+            ${product.name}
+        </h2>
+
+        <div class="price">
+            ${money(product.price)}
+
+            <span class="old-price">
+                ${money(product.oldPrice)}
+            </span>
+
+        </div>
+
+        <p>
+            ${product.description}
+        </p>
+
+        <div class="deal-info">
+
+            <strong>
+                Listed Price
+            </strong>
+
+            <span>
+                ${money(product.price)}
+            </span>
+
+        </div>
+
+    `;
+
+    const offerInput =
+        document.getElementById(
+            "offerPrice"
+        );
+
+    if (offerInput) {
+
+        offerInput.placeholder =
+            "Example: " +
+            Math.round(
+                product.price * 0.90
+            );
+
+    }
+
+    updateNegotiationInfo();
+
+}
+
+
+/* ---------------------------------------------------------
+   UPDATE NEGOTIATION INFORMATION
+--------------------------------------------------------- */
+
+function updateNegotiationInfo() {
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "negotiationQuantity"
+            )?.value || 1
+        );
+
+    if (!currentNegotiationProduct)
+        return;
+
+    const discount =
+        getBulkDiscount(quantity);
+
+    const bulkPrice =
+        Math.round(
+            currentNegotiationProduct.price *
+            (1 - discount / 100)
+        );
+
+    const result =
+        document.getElementById(
+            "negotiationResult"
+        );
+
+    if (!result) return;
+
+    result.innerHTML = `
+
+        <div class="bulk-preview">
+
+            <strong>
+                📦 ${quantity} unit(s)
+            </strong>
+
+            <span>
+                Potential bulk discount:
+                <b>${discount}%</b>
+            </span>
+
+            <span>
+                AI target price:
+                <b>${money(bulkPrice)}</b>
+            </span>
+
+        </div>
+
+    `;
+
+}
+
+
+/* ---------------------------------------------------------
+   START NEGOTIATION
+--------------------------------------------------------- */
+
+function startNegotiation() {
+
+    if (!currentNegotiationProduct) {
+
+        alert(
+            "Please select a product."
+        );
+
+        return;
+
+    }
+
+    const quantity =
+        Number(
+            document.getElementById(
+                "negotiationQuantity"
+            ).value
+        );
+
+    const offer =
+        Number(
+            document.getElementById(
+                "offerPrice"
+            ).value
+        );
+
+    const message =
+        document.getElementById(
+            "offerMessage"
+        ).value.trim();
+
+    if (!quantity || quantity < 1) {
+
+        alert(
+            "Enter a valid quantity."
+        );
+
+        return;
+
+    }
+
+    if (!offer || offer <= 0) {
+
+        alert(
+            "Enter your offer price."
+        );
+
+        return;
+
+    }
+
+    if (
+        offer >
+        currentNegotiationProduct.price
+    ) {
+
+        alert(
+            "Your offer is already higher than the listed price."
+        );
+
+        return;
+
+    }
+
+    currentCustomerOffer =
+        offer;
+
+    currentNegotiationQuantity =
+        quantity;
+
+
+    addNegotiationMessage(
+        "customer",
+
+        `
+        💰 I want
+        <b>${quantity}</b>
+        × ${currentNegotiationProduct.name}
+        at
+        <b>${money(offer)}</b>
+        per product.
+
+        ${message
+            ? `<br>${message}`
+            : ""}
+        `
+    );
+
+
+    addNegotiationMessage(
+        "ai",
+
+        `
+        🤖 I'm evaluating your offer
+        and negotiating with the seller...
+        `
+    );
+
+
+    const button =
+        document.querySelector(
+            ".negotiation-card .btn-primary"
+        );
+
+    if (button) {
+
+        button.disabled = true;
+
+        button.textContent =
+            "🤖 Negotiating...";
+
+    }
+
+
+    setTimeout(
+        processSellerNegotiation,
+        1500
+    );
