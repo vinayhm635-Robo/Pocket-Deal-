@@ -3,121 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment | Pocket Deal</title>
+    <title>Payment - Pocket Deal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <a href="index.html" class="logo">
-        <span>PD</span> Pocket Deal
-    </a>
-
-    <nav>
-        <a href="products.html">Shop</a>
-        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
-    </nav>
-
+    <a href="index.html" class="logo"><span>PD</span> Pocket Deal</a>
 </header>
 
-<main class="section">
+<section class="section payment-page">
 
-    <div class="payment-layout">
+    <div class="payment-card">
 
-        <div class="form-card">
+        <h1>Complete Payment</h1>
 
-            <h1>Choose Payment</h1>
+        <p>Total Amount</p>
+        <div id="paymentTotal" class="payment-total">₹0</div>
 
-            <p class="muted">
-                Select your preferred payment method.
-            </p>
+        <h3>Select Payment Method</h3>
 
-            <label class="payment-option">
+        <label class="payment-option">
+            <input type="radio" name="payment" value="UPI" checked>
+            📱 UPI
+        </label>
 
-                <input
-                    type="radio"
-                    name="payment"
-                    value="UPI"
-                    checked
-                >
+        <label class="payment-option">
+            <input type="radio" name="payment" value="Card">
+            💳 Card
+        </label>
 
-                <span>📱</span>
+        <label class="payment-option">
+            <input type="radio" name="payment" value="COD">
+            📦 Cash on Delivery
+        </label>
 
-                <div>
-                    <strong>UPI</strong>
-                    <small>Google Pay, PhonePe, Paytm</small>
-                </div>
+        <button
+            class="btn-primary full"
+            onclick="placeOrder()"
+        >
+            Pay & Place Order
+        </button>
 
-            </label>
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="Card"
-                >
-
-                <span>💳</span>
-
-                <div>
-                    <strong>Credit / Debit Card</strong>
-                    <small>Secure card payment</small>
-                </div>
-
-            </label>
-
-            <label class="payment-option">
-
-                <input
-                    type="radio"
-                    name="payment"
-                    value="COD"
-                >
-
-                <span>💵</span>
-
-                <div>
-                    <strong>Cash on Delivery</strong>
-                    <small>Pay when your order arrives</small>
-                </div>
-
-            </label>
-
-            <button
-                class="btn-primary full"
-                onclick="placeOrder()"
-            >
-                Pay & Place Order
-            </button>
-
-        </div>
-
-        <aside class="summary-card">
-
-            <h2>Order Total</h2>
-
-            <div class="summary-total">
-                <span>Total</span>
-                <strong id="paymentTotal">₹0</strong>
-            </div>
-
-            <p class="secure">
-                🔒 Secure demo checkout
-            </p>
-
-        </aside>
+        <p class="secure">🔒 Demo secure payment</p>
 
     </div>
 
-</main>
-
-<footer>
-    <h2>PD | Pocket Deal</h2>
-    <p>Shop smarter. Save better.</p>
-</footer>
+</section>
 
 <script src="script.js"></script>
 </body>
