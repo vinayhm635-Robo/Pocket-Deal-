@@ -6,7 +6,6 @@
     <title>Pocket Deal | Shop Smarter. Save Better.</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
@@ -17,46 +16,60 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Shop</a>
-        <a href="cart.html">Cart 🛒 <b id="cartCount">0</b></a>
-        <a href="login.html" id="loginLink">Login</a>
+        <a href="bulk.html">Bulk Deals</a>
+        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+        <a href="login.html">Login</a>
     </nav>
 </header>
 
-<main>
-
 <section class="hero">
     <div>
-        <p class="badge">🔥 Smart Shopping Platform</p>
-        <h1>Shop smarter.<br><span>Save better.</span></h1>
+        <div class="badge">🔥 Smart Shopping</div>
+
+        <h1>
+            Shop smarter.<br>
+            <span>Save better.</span>
+        </h1>
+
         <p>
-            Discover amazing products, compare deals and find
-            the best prices with Pocket Deal.
+            Discover great products, compare prices and get
+            better deals with Pocket Deal.
         </p>
 
         <div class="hero-buttons">
             <a href="products.html" class="btn-primary">Shop Now</a>
-            <a href="#categories" class="btn-secondary">Explore Categories</a>
+            <a href="bulk.html" class="btn-secondary">Bulk Deals</a>
         </div>
     </div>
 
     <div class="hero-card">
-        <div class="deal-icon">🛍️</div>
-        <h2>Today's Best Deal</h2>
-        <p>Premium products at pocket-friendly prices.</p>
-        <strong>Save More • Shop More</strong>
+        <div class="hero-icon">🛍️</div>
+        <h2>Smart Deals</h2>
+        <p>Buy more and save more with Pocket Deal.</p>
+
+        <div class="saving-box">
+            <strong>Up to 15% OFF</strong>
+            <small>on selected bulk orders</small>
+        </div>
     </div>
 </section>
 
-<section id="categories" class="section">
+<section class="section" id="categories">
     <div class="section-title">
         <h2>Shop by Category</h2>
-        <p>Find what you need quickly</p>
+        <p>Choose your favorite category</p>
     </div>
 
     <div class="category-grid">
+
         <a href="products.html?category=Laptop" class="category-card">
             <span>💻</span>
             <h3>Laptops</h3>
+        </a>
+
+        <a href="products.html?category=Mobile" class="category-card">
+            <span>📱</span>
+            <h3>Mobiles</h3>
         </a>
 
         <a href="products.html?category=Headphones" class="category-card">
@@ -69,23 +82,36 @@
             <h3>Shoes</h3>
         </a>
 
-        <a href="products.html?category=Mobile" class="category-card">
-            <span>📱</span>
-            <h3>Mobiles</h3>
-        </a>
     </div>
 </section>
 
 <section class="section">
+
     <div class="section-title">
         <h2>Popular Deals</h2>
-        <p>Hand-picked products for you</p>
+        <p>Our most popular products</p>
     </div>
 
     <div id="homeProducts" class="product-grid"></div>
+
 </section>
 
-</main>
+<section class="bulk-banner">
+
+    <div>
+        <span class="badge">📦 Bulk Buyers</span>
+        <h2>Need more quantity?</h2>
+        <p>
+            Request a special bulk price for your business,
+            college, office or organization.
+        </p>
+    </div>
+
+    <a href="bulk.html" class="btn-primary">
+        Request Bulk Deal
+    </a>
+
+</section>
 
 <footer>
     <h2>PD | Pocket Deal</h2>
