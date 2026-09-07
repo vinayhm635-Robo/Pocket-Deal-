@@ -3,40 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart | Pocket Deal</title>
+    <title>Cart - Pocket Deal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <a href="index.html" class="logo">
-        <span>PD</span> Pocket Deal
-    </a>
+    <a href="index.html" class="logo"><span>PD</span> Pocket Deal</a>
 
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Shop</a>
         <a href="bulk.html">Bulk Deals</a>
-        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
     </nav>
-
 </header>
 
-<main class="section">
-
-    <div class="section-title">
-        <h1>Your Shopping Cart</h1>
-        <p>Review your products before checkout.</p>
-    </div>
+<section class="section">
+    <h1>Your Cart</h1>
 
     <div class="cart-layout">
-
         <div id="cartItems"></div>
 
-        <aside class="summary-card">
-
+        <div class="cart-summary">
             <h2>Order Summary</h2>
 
             <div class="summary-row">
@@ -44,36 +33,21 @@
                 <strong id="subtotal">₹0</strong>
             </div>
 
-            <div class="summary-row">
-                <span>Delivery</span>
-                <strong>FREE</strong>
-            </div>
-
-            <hr>
-
-            <div class="summary-total">
+            <div class="summary-row total">
                 <span>Total</span>
                 <strong id="cartTotal">₹0</strong>
             </div>
 
-            <a href="checkout.html" class="btn-primary full" onclick="return checkCartBeforeCheckout()">
-    Proceed to Checkout
+            <a
+                href="checkout.html"
+                class="btn-primary full"
+                onclick="return checkCartBeforeCheckout()"
+            >
+                Proceed to Checkout
             </a>
-
-            <a href="products.html" class="continue">
-                ← Continue Shopping
-            </a>
-
-        </aside>
-
+        </div>
     </div>
-
-</main>
-
-<footer>
-    <h2>PD | Pocket Deal</h2>
-    <p>Shop smarter. Save better.</p>
-</footer>
+</section>
 
 <script src="script.js"></script>
 </body>
