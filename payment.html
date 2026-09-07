@@ -1,69 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Payment - Pocket Deal</title>
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment | Pocket Deal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="navbar">
 
-    <div class="logo">
+    <a href="index.html" class="logo">
         <span>PD</span> Pocket Deal
-    </div>
+    </a>
+
+    <nav>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+    </nav>
 
 </header>
 
-<main class="payment-page">
+<main class="section">
 
-    <div class="page-title">
+    <div class="payment-layout">
 
-        <p class="small-title">
-            SECURE PAYMENT
-        </p>
+        <div class="form-card">
 
-        <h1>
-            Choose Payment Method
-        </h1>
+            <h1>Choose Payment</h1>
 
-    </div>
-
-    <div class="payment-container">
-
-        <div class="payment-methods">
+            <p class="muted">
+                Select your preferred payment method.
+            </p>
 
             <label class="payment-option">
 
                 <input
                     type="radio"
                     name="payment"
-                    value="upi"
+                    value="UPI"
                     checked
                 >
 
                 <span>📱</span>
 
                 <div>
-
-                    <strong>
-                        UPI
-                    </strong>
-
-                    <small>
-                        Google Pay / PhonePe / Paytm
-                    </small>
-
+                    <strong>UPI</strong>
+                    <small>Google Pay, PhonePe, Paytm</small>
                 </div>
 
             </label>
@@ -73,21 +57,14 @@
                 <input
                     type="radio"
                     name="payment"
-                    value="card"
+                    value="Card"
                 >
 
                 <span>💳</span>
 
                 <div>
-
-                    <strong>
-                        Credit / Debit Card
-                    </strong>
-
-                    <small>
-                        Visa / Mastercard / RuPay
-                    </small>
-
+                    <strong>Credit / Debit Card</strong>
+                    <small>Secure card payment</small>
                 </div>
 
             </label>
@@ -97,56 +74,51 @@
                 <input
                     type="radio"
                     name="payment"
-                    value="cod"
+                    value="COD"
                 >
 
                 <span>💵</span>
 
                 <div>
-
-                    <strong>
-                        Cash on Delivery
-                    </strong>
-
-                    <small>
-                        Pay when your order arrives
-                    </small>
-
+                    <strong>Cash on Delivery</strong>
+                    <small>Pay when your order arrives</small>
                 </div>
 
             </label>
 
-        </div>
-
-        <div class="payment-total">
-
-            <p>
-                Amount to Pay
-            </p>
-
-            <h2 id="paymentTotal">
-                ₹0
-            </h2>
-
             <button
-                onclick="processPayment()"
-                class="primary-btn full-btn">
-
-                Pay Securely
-
+                class="btn-primary full"
+                onclick="placeOrder()"
+            >
+                Pay & Place Order
             </button>
 
+        </div>
+
+        <aside class="summary-card">
+
+            <h2>Order Total</h2>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <strong id="paymentTotal">₹0</strong>
+            </div>
+
             <p class="secure">
-                🔒 Your payment information is protected.
+                🔒 Secure demo checkout
             </p>
 
-        </div>
+        </aside>
 
     </div>
 
 </main>
 
-<script src="script.js"></script>
+<footer>
+    <h2>PD | Pocket Deal</h2>
+    <p>Shop smarter. Save better.</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
