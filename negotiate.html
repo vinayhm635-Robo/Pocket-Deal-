@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Negotiate Deal - Pocket Deal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span>PD</span> Pocket Deal
+    </a>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="bulk.html">Bulk Deals</a>
+        <a href="cart.html">
+            Cart (<span id="cartCount">0</span>)
+        </a>
+    </nav>
+</header>
+
+<section class="section">
+
+    <div class="negotiation-container">
+
+        <div class="negotiation-header">
+            <span class="badge">🤖 AI Negotiation</span>
+            <h1>Negotiate Your Deal</h1>
+            <p>
+                Bid your price and let Pocket Deal AI negotiate
+                the best possible deal.
+            </p>
+        </div>
+
+        <div class="negotiation-grid">
+
+            <!-- PRODUCT -->
+            <div class="negotiation-product">
+
+                <div id="negotiationProductImage"
+                     class="large-image">
+                    🛍️
+                </div>
+
+                <div id="negotiationProductInfo">
+                    <h2>Select a Product</h2>
+                </div>
+
+            </div>
+
+            <!-- NEGOTIATION -->
+            <div class="negotiation-card">
+
+                <h2>💰 Make Your Offer</h2>
+
+                <label>Quantity</label>
+
+                <input
+                    type="number"
+                    id="negotiationQuantity"
+                    min="1"
+                    value="1"
+                    oninput="updateNegotiationInfo()"
+                >
+
+                <label>Your Offer Per Product</label>
+
+                <input
+                    type="number"
+                    id="offerPrice"
+                    placeholder="Enter your price"
+                >
+
+                <label>Message to Seller</label>
+
+                <textarea
+                    id="offerMessage"
+                    placeholder="Example: I want this product at a better price."
+                ></textarea>
+
+                <button
+                    class="btn-primary full"
+                    onclick="startNegotiation()"
+                >
+                    🤖 Submit Offer
+                </button>
+
+                <div
+                    id="negotiationResult"
+                    class="negotiation-result"
+                ></div>
+
+            </div>
+
+        </div>
+
+        <!-- CHAT -->
+        <div class="negotiation-chat">
+
+            <h2>🤝 Negotiation</h2>
+
+            <div id="negotiationMessages"
+                 class="negotiation-messages">
+
+                <div class="chat-message ai">
+                    <strong>🤖 Pocket Deal AI</strong>
+                    <p>
+                        Enter your offer and I'll help negotiate
+                        the best possible price.
+                    </p>
+                </div>
+
+            </div>
+
+            <div
+                id="counterSection"
+                class="counter-section"
+                style="display:none;"
+            >
+
+                <h3>Seller Counter-Offer</h3>
+
+                <div id="sellerOffer"
+                     class="seller-offer">
+                </div>
+
+                <div class="counter-actions">
+
+                    <button
+                        class="btn-primary"
+                        onclick="acceptSellerOffer()"
+                    >
+                        ✅ Accept
+                    </button>
+
+                    <button
+                        class="btn-secondary"
+                        onclick="showCounterInput()"
+                    >
+                        🔄 Counter
+                    </button>
+
+                    <button
+                        class="reject-btn"
+                        onclick="rejectSellerOffer()"
+                    >
+                        ❌ Reject
+                    </button>
+
+                </div>
+
+                <div
+                    id="customerCounter"
+                    style="display:none;"
+                >
+
+                    <input
+                        type="number"
+                        id="counterPrice"
+                        placeholder="Your counter price"
+                    >
+
+                    <button
+                        class="btn-primary full"
+                        onclick="sendCustomerCounter()"
+                    >
+                        Send Counter Offer
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
