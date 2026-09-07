@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Checkout - Pocket Deal</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span>PD</span> Pocket Deal
+    </div>
+
+    <nav>
+
+        <a href="products.html">
+            Products
+        </a>
+
+        <a href="cart.html">
+            🛒 Cart
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="checkout-page">
+
+    <div class="page-title">
+
+        <p class="small-title">
+            CHECKOUT
+        </p>
+
+        <h1>
+            Delivery Details
+        </h1>
+
+    </div>
+
+    <form
+        onsubmit="continuePayment(event)"
+        class="checkout-form">
+
+        <h2>
+            Contact Information
+        </h2>
+
+        <input
+            id="name"
+            type="text"
+            placeholder="Full name"
+            required
+        >
+
+        <input
+            id="phone"
+            type="tel"
+            placeholder="Mobile number"
+            pattern="[0-9]{10}"
+            required
+        >
+
+        <input
+            id="email"
+            type="email"
+            placeholder="Email address"
+            required
+        >
+
+        <h2>
+            Delivery Address
+        </h2>
+
+        <textarea
+            id="address"
+            placeholder="House / Street / Area"
+            required>
+        </textarea>
+
+        <div class="two-inputs">
+
+            <input
+                id="city"
+                type="text"
+                placeholder="City"
+                required
+            >
+
+            <input
+                id="pincode"
+                type="text"
+                placeholder="PIN Code"
+                pattern="[0-9]{6}"
+                required
+            >
+
+        </div>
+
+        <button
+            class="primary-btn full-btn">
+
+            Continue to Payment →
+
+        </button>
+
+    </form>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
