@@ -1,93 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Login - Pocket Deal</title>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Pocket Deal</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
 
-<body class="login-page">
+<body>
 
-<div class="login-container">
-
-    <div class="login-logo">
-
-        <span>PD</span>
-
-        <h1>Pocket Deal</h1>
-
-    </div>
-
-    <h2>Welcome back 👋</h2>
-
-    <p>
-        Login to continue shopping smarter.
-    </p>
-
-    <form onsubmit="loginUser(event)">
-
-        <label>Email address</label>
-
-        <input
-            id="email"
-            type="email"
-            placeholder="you@example.com"
-            required
-        >
-
-        <label>Password</label>
-
-        <input
-            id="password"
-            type="password"
-            placeholder="Enter password"
-            required
-        >
-
-        <button class="primary-btn full-btn">
-            Login
-        </button>
-
-    </form>
-
-    <div class="or">
-        <span>OR</span>
-    </div>
-
-    <button
-        class="google-btn"
-        onclick="googleLogin()">
-
-        <span>G</span>
-        Continue with Google
-
-    </button>
-
-    <p class="login-footer">
-
-        Don't have an account?
-
-        <a href="#" onclick="createAccount()">
-            Create account
-        </a>
-
-    </p>
-
-    <a href="index.html" class="back-home">
-        ← Back to Home
+<header class="navbar">
+    <a href="index.html" class="logo">
+        <span>PD</span> Pocket Deal
     </a>
 
-</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Shop</a>
+        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+    </nav>
+</header>
+
+<main class="auth-page">
+
+    <div class="auth-box">
+
+        <div class="auth-logo">PD</div>
+
+        <h1>Welcome Back</h1>
+        <p>Login to continue shopping.</p>
+
+        <form onsubmit="loginUser(event)">
+
+            <label>Email</label>
+
+            <input
+                type="email"
+                id="loginEmail"
+                placeholder="Enter your email"
+                required
+            >
+
+            <label>Password</label>
+
+            <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+                required
+            >
+
+            <button class="btn-primary full" type="submit">
+                Login
+            </button>
+
+        </form>
+
+        <div class="divider">
+            <span>OR</span>
+        </div>
+
+        <button class="google-btn" onclick="googleLogin()">
+            🔵 Continue with Google
+        </button>
+
+        <p class="demo-note">
+            Demo authentication. Real Google login requires Firebase
+            or another authentication service.
+        </p>
+
+    </div>
+
+</main>
 
 <script src="script.js"></script>
-
 </body>
 </html>
