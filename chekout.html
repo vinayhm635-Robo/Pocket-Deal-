@@ -1,127 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
-
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
-
-    <title>Checkout - Pocket Deal</title>
-
-    <link rel="stylesheet"
-          href="style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | Pocket Deal</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
+<header class="navbar">
 
-    <div class="logo">
+    <a href="index.html" class="logo">
         <span>PD</span> Pocket Deal
-    </div>
+    </a>
 
     <nav>
-
-        <a href="products.html">
-            Products
-        </a>
-
-        <a href="cart.html">
-            🛒 Cart
-        </a>
-
+        <a href="products.html">Shop</a>
+        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
     </nav>
 
 </header>
 
-<main class="checkout-page">
+<main class="section">
 
-    <div class="page-title">
+    <div class="checkout-layout">
 
-        <p class="small-title">
-            CHECKOUT
-        </p>
+        <div class="form-card">
 
-        <h1>
-            Delivery Details
-        </h1>
+            <h1>Delivery Details</h1>
+            <p class="muted">
+                Enter your details to continue.
+            </p>
 
-    </div>
+            <form onsubmit="goToPayment(event)">
 
-    <form
-        onsubmit="continuePayment(event)"
-        class="checkout-form">
+                <label>Full Name</label>
+                <input
+                    type="text"
+                    id="name"
+                    placeholder="Your full name"
+                    required
+                >
 
-        <h2>
-            Contact Information
-        </h2>
+                <label>Email</label>
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="your@email.com"
+                    required
+                >
 
-        <input
-            id="name"
-            type="text"
-            placeholder="Full name"
-            required
-        >
+                <label>Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="10 digit mobile number"
+                    pattern="[0-9]{10}"
+                    required
+                >
 
-        <input
-            id="phone"
-            type="tel"
-            placeholder="Mobile number"
-            pattern="[0-9]{10}"
-            required
-        >
+                <label>Address</label>
+                <textarea
+                    id="address"
+                    placeholder="House number, street, area"
+                    required
+                ></textarea>
 
-        <input
-            id="email"
-            type="email"
-            placeholder="Email address"
-            required
-        >
+                <div class="two-columns">
 
-        <h2>
-            Delivery Address
-        </h2>
+                    <div>
+                        <label>City</label>
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="City"
+                            required
+                        >
+                    </div>
 
-        <textarea
-            id="address"
-            placeholder="House / Street / Area"
-            required>
-        </textarea>
+                    <div>
+                        <label>PIN Code</label>
+                        <input
+                            type="text"
+                            id="pincode"
+                            placeholder="6 digit PIN"
+                            pattern="[0-9]{6}"
+                            required
+                        >
+                    </div>
 
-        <div class="two-inputs">
+                </div>
 
-            <input
-                id="city"
-                type="text"
-                placeholder="City"
-                required
-            >
+                <button class="btn-primary full" type="submit">
+                    Continue to Payment
+                </button>
 
-            <input
-                id="pincode"
-                type="text"
-                placeholder="PIN Code"
-                pattern="[0-9]{6}"
-                required
-            >
+            </form>
 
         </div>
 
-        <button
-            class="primary-btn full-btn">
+        <aside class="summary-card">
 
-            Continue to Payment →
+            <h2>Your Order</h2>
 
-        </button>
+            <div id="checkoutItems"></div>
 
-    </form>
+            <hr>
+
+            <div class="summary-total">
+                <span>Total</span>
+                <strong id="checkoutTotal">₹0</strong>
+            </div>
+
+        </aside>
+
+    </div>
 
 </main>
 
-<script src="script.js"></script>
+<footer>
+    <h2>PD | Pocket Deal</h2>
+    <p>Shop smarter. Save better.</p>
+</footer>
 
+<script src="script.js"></script>
 </body>
 </html>
