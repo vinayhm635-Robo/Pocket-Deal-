@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Products | Pocket Deal</title>
+
+    <title>Shop Products | Pocket Deal</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -12,27 +14,39 @@
 <header class="navbar">
 
     <a href="index.html" class="logo">
-        <span>PD</span> Pocket Deal
+        <span>PD</span>
+        Pocket Deal
     </a>
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="products.html">Shop</a>
+        <a href="products.html" class="active">Shop</a>
         <a href="bulk.html">Bulk Deals</a>
-        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+        <a href="cart.html">
+            🛒 Cart <b id="cartCount">0</b>
+        </a>
         <a href="login.html">Login</a>
     </nav>
 
 </header>
 
+
 <main class="section">
+
+    <!-- SHOP HEADER -->
 
     <div class="shop-top">
 
         <div>
+            <span class="small-label">POCKET DEAL STORE</span>
+
             <h1>Explore Products</h1>
-            <p>Find products at great prices.</p>
+
+            <p>
+                Choose a product and negotiate your best price.
+            </p>
         </div>
+
 
         <input
             type="search"
@@ -43,25 +57,56 @@
 
     </div>
 
-    <div class="filters">
 
-        <button onclick="filterCategory('All')">All</button>
-        <button onclick="filterCategory('Laptop')">💻 Laptop</button>
-        <button onclick="filterCategory('Mobile')">📱 Mobile</button>
-        <button onclick="filterCategory('Headphones')">🎧 Headphones</button>
-        <button onclick="filterCategory('Shoes')">👟 Shoes</button>
+    <!-- CATEGORY SECTION -->
+
+    <div class="category-heading">
+
+        <div>
+            <h2>What are you shopping for?</h2>
+
+            <p>
+                Select a category to find the best deals.
+            </p>
+        </div>
 
     </div>
 
-    <div id="productList" class="product-grid"></div>
 
-</main>
+    <div class="filters">
 
-<footer>
-    <h2>PD | Pocket Deal</h2>
-    <p>Shop smarter. Save better.</p>
-</footer>
+        <button
+            class="active"
+            onclick="filterCategory('All')">
+            🛍️ All
+        </button>
 
-<script src="script.js"></script>
-</body>
-</html>
+        <button
+            onclick="filterCategory('Laptop')">
+            💻 Laptop
+        </button>
+
+        <button
+            onclick="filterCategory('Mobile')">
+            📱 Mobile
+        </button>
+
+        <button
+            onclick="filterCategory('Headphones')">
+            🎧 Headphones
+        </button>
+
+        <button
+            onclick="filterCategory('Shoes')">
+            👟 Shoes
+        </button>
+
+        <button
+            onclick="filterCategory('Smartwatch')">
+            ⌚ Smartwatch
+        </button>
+
+        <button
+            onclick="filterCategory('Accessories')">
+            🎒 Accessories
+       
