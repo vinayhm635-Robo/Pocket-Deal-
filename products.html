@@ -3,110 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Shop Products | Pocket Deal</title>
-
+    <title>Shop - Pocket Deal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-
-    <a href="index.html" class="logo">
-        <span>PD</span>
-        Pocket Deal
-    </a>
+    <a href="index.html" class="logo"><span>PD</span> Pocket Deal</a>
 
     <nav>
         <a href="index.html">Home</a>
-        <a href="products.html" class="active">Shop</a>
+        <a href="products.html">Shop</a>
         <a href="bulk.html">Bulk Deals</a>
-        <a href="cart.html">
-            🛒 Cart <b id="cartCount">0</b>
-        </a>
+        <a href="cart.html">Cart (<span id="cartCount">0</span>)</a>
         <a href="login.html">Login</a>
     </nav>
-
 </header>
 
+<section class="page-header">
+    <h1>Shop Products</h1>
+    <p>Find your product and negotiate your best deal.</p>
+</section>
 
-<main class="section">
+<section class="shop-section">
 
-    <!-- SHOP HEADER -->
-
-    <div class="shop-top">
-
-        <div>
-            <span class="small-label">POCKET DEAL STORE</span>
-
-            <h1>Explore Products</h1>
-
-            <p>
-                Choose a product and negotiate your best price.
-            </p>
-        </div>
-
-
+    <div class="search-box">
         <input
-            type="search"
+            type="text"
             id="searchInput"
-            placeholder="🔎 Search products..."
+            placeholder="Search products..."
             oninput="displayProducts()"
         >
-
     </div>
 
-
-    <!-- CATEGORY SECTION -->
-
-    <div class="category-heading">
-
-        <div>
-            <h2>What are you shopping for?</h2>
-
-            <p>
-                Select a category to find the best deals.
-            </p>
-        </div>
-
+    <div class="category-row">
+        <button onclick="filterCategory('All')">All</button>
+        <button onclick="filterCategory('Laptop')">💻 Laptops</button>
+        <button onclick="filterCategory('Mobile')">📱 Mobiles</button>
+        <button onclick="filterCategory('Headphones')">🎧 Headphones</button>
+        <button onclick="filterCategory('Shoes')">👟 Shoes</button>
     </div>
 
+    <div id="productList" class="product-grid"></div>
 
-    <div class="filters">
+</section>
 
-        <button
-            class="active"
-            onclick="filterCategory('All')">
-            🛍️ All
-        </button>
-
-        <button
-            onclick="filterCategory('Laptop')">
-            💻 Laptop
-        </button>
-
-        <button
-            onclick="filterCategory('Mobile')">
-            📱 Mobile
-        </button>
-
-        <button
-            onclick="filterCategory('Headphones')">
-            🎧 Headphones
-        </button>
-
-        <button
-            onclick="filterCategory('Shoes')">
-            👟 Shoes
-        </button>
-
-        <button
-            onclick="filterCategory('Smartwatch')">
-            ⌚ Smartwatch
-        </button>
-
-        <button
-            onclick="filterCategory('Accessories')">
-            🎒 Accessories
-       
+<script src="script.js"></script>
+</body>
+</html>
