@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Payment - Pocket Deal</title>
+
+    <link rel="stylesheet"
+          href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span>PD</span> Pocket Deal
+    </div>
+
+</header>
+
+<main class="payment-page">
+
+    <div class="page-title">
+
+        <p class="small-title">
+            SECURE PAYMENT
+        </p>
+
+        <h1>
+            Choose Payment Method
+        </h1>
+
+    </div>
+
+    <div class="payment-container">
+
+        <div class="payment-methods">
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="upi"
+                    checked
+                >
+
+                <span>📱</span>
+
+                <div>
+
+                    <strong>
+                        UPI
+                    </strong>
+
+                    <small>
+                        Google Pay / PhonePe / Paytm
+                    </small>
+
+                </div>
+
+            </label>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="card"
+                >
+
+                <span>💳</span>
+
+                <div>
+
+                    <strong>
+                        Credit / Debit Card
+                    </strong>
+
+                    <small>
+                        Visa / Mastercard / RuPay
+                    </small>
+
+                </div>
+
+            </label>
+
+            <label class="payment-option">
+
+                <input
+                    type="radio"
+                    name="payment"
+                    value="cod"
+                >
+
+                <span>💵</span>
+
+                <div>
+
+                    <strong>
+                        Cash on Delivery
+                    </strong>
+
+                    <small>
+                        Pay when your order arrives
+                    </small>
+
+                </div>
+
+            </label>
+
+        </div>
+
+        <div class="payment-total">
+
+            <p>
+                Amount to Pay
+            </p>
+
+            <h2 id="paymentTotal">
+                ₹0
+            </h2>
+
+            <button
+                onclick="processPayment()"
+                class="primary-btn full-btn">
+
+                Pay Securely
+
+            </button>
+
+            <p class="secure">
+                🔒 Your payment information is protected.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
