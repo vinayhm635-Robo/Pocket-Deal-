@@ -1,91 +1,518 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>DealMate - Bulk Deals</title>
 
-    <title>Pocket Deal - Bulk Deals</title>
-
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header class="navbar">
+    <!-- HEADER -->
+    <header class="navbar">
+        <div class="logo">
+            <span>Deal</span>Mate
+        </div>
 
-    <a href="index.html" class="logo">
-        <span>PD</span>
-        Pocket Deal
-    </a>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Shop</a>
-        <a href="bulk.html">Bulk Deals</a>
-
-        <a href="cart.html">
-            Cart (<span id="cartCount">0</span>)
-        </a>
-    </nav>
-
-</header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="product.html">Products</a>
+            <a href="bulk.html" class="active">Bulk Deals</a>
+        </nav>
+    </header>
 
 
-<main>
-
-    <!-- HERO -->
-
-    <section class="section">
-
-        <div class="page-header">
-
-            <h1>
-                📦 Bulk Deal Request
-            </h1>
+    <!-- HERO SECTION -->
+    <section class="bulk-hero">
+        <div class="hero-content">
+            <h1>Buy More. Save More.</h1>
 
             <p>
-                Buy more and negotiate a better price.
+                Purchase products in bulk and negotiate a better price
+                with DealMate's smart negotiation system.
             </p>
 
+            <button onclick="scrollToBulk()">
+                Start Bulk Negotiation
+            </button>
+        </div>
+    </section>
+
+
+    <!-- BULK PRODUCTS -->
+    <main class="bulk-container" id="bulkSection">
+
+        <div class="section-heading">
+            <h2>Bulk Deal Products</h2>
+            <p>Select a product and choose how many you want to buy.</p>
         </div>
 
 
-        <!-- PRODUCT SELECT -->
+        <!-- PRODUCT GRID -->
+        <div id="bulkProductGrid" class="bulk-product-grid">
 
-        <div class="bulk-product-selector">
-
-            <select id="bulkProduct"
-                    onchange="updateBulkProduct()">
-
-                <option value="">
-                    Choose a product
-                </option>
-
-            </select>
+            <!-- Products are loaded using script.js -->
 
         </div>
 
 
-        <!-- BULK DEAL CARD -->
+        <!-- NEGOTIATION BOX -->
+        <section class="negotiation-section" id="negotiationSection">
 
-        <div class="bulk-container">
+            <div class="negotiation-card">
 
-            <div class="bulk-card">
+                <h2>🤝 Negotiate Your Price</h2>
 
-                <h2>
-                    Request Your Deal
-                </h2>
+                <p id="selectedProductText">
+                    Select a product above to start negotiation.
+                </p>
 
 
-                <!-- PRODUCT -->
+                <div class="negotiation-details">
 
-                <div class="form-group">
+                    <div class="input-group">
+                        <label for="bulkQuantity">
+                            Quantity
+                        </label>
 
-                    <label>
-                        Select Product
-                    </label>
+                        <input
+                            type="number"
+                            id="bulkQuantity"
+                            min="1"
+                            value="10"
+                            placeholder="Enter quantity"
+                        >
+                    </div>
 
-                    <
+
+                    <div class="input-group">
+                        <label for="offerPrice">
+                            Your Offer Price (₹)
+                        </label>
+
+                        <input
+                            type="number"
+                            id="offerPrice"
+                            min="1"
+                            placeholder="Enter your price"
+                        >
+                    </div>
+
+                </div>
+
+
+                <button
+                    class="negotiate-btn"
+                    onclick="startBulkNegotiation()"
+                >
+                    🤝 Negotiate Price
+                </button>
+
+
+                <!-- NEGOTIATION RESULT -->
+                <div
+                    id="negotiationResult"
+                    class="negotiation-result"
+                ></div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- BULK BENEFITS -->
+    <section class="bulk-benefits">
+
+        <div class="section-heading">
+            <h2>Why Buy in Bulk?</h2>
+        </div>
+
+        <div class="benefits-grid">
+
+            <div class="benefit-card">
+                <div class="benefit-icon">💰</div>
+                <h3>Better Prices</h3>
+                <p>
+                    Larger quantities can unlock bigger discounts.
+                </p>
+            </div>
+
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🤝</div>
+                <h3>Smart Negotiation</h3>
+                <p>
+                    Make your own offer and let DealMate negotiate.
+                </p>
+            </div>
+
+
+            <div class="benefit-card">
+                <div class="benefit-icon">⚡</div>
+                <h3>Quick Deals</h3>
+                <p>
+                    Get a suggested deal instantly based on quantity.
+                </p>
+            </div>
+
+
+            <div class="benefit-card">
+                <div class="benefit-icon">🛒</div>
+                <h3>Easy Shopping</h3>
+                <p>
+                    Select products, choose quantity and negotiate.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer>
+
+        <div class="footer-content">
+
+            <div>
+                <h2>DealMate</h2>
+
+                <p>
+                    Shop smarter. Negotiate better.
+                </p>
+            </div>
+
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="product.html">Products</a>
+                <a href="bulk.html">Bulk Deals</a>
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+            <p>
+                © 2026 DealMate. All rights reserved.
+            </p>
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+
+
+    <script>
+
+        /*
+         * Scroll to bulk products
+         */
+        function scrollToBulk() {
+
+            const section =
+                document.getElementById("bulkSection");
+
+            if (section) {
+                section.scrollIntoView({
+                    behavior: "smooth"
+                });
+            }
+        }
+
+
+        /*
+         * Start bulk negotiation
+         */
+        function startBulkNegotiation() {
+
+            const quantity =
+                Number(
+                    document.getElementById("bulkQuantity").value
+                );
+
+            const offerPrice =
+                Number(
+                    document.getElementById("offerPrice").value
+                );
+
+            const result =
+                document.getElementById("negotiationResult");
+
+
+            if (quantity <= 0 || isNaN(quantity)) {
+
+                result.innerHTML =
+                    "⚠️ Please enter a valid quantity.";
+
+                result.style.display = "block";
+
+                return;
+            }
+
+
+            if (offerPrice <= 0 || isNaN(offerPrice)) {
+
+                result.innerHTML =
+                    "⚠️ Please enter a valid offer price.";
+
+                result.style.display = "block";
+
+                return;
+            }
+
+
+            /*
+             * Simple DealMate negotiation logic
+             */
+
+            let discount = 0;
+
+
+            if (quantity >= 50) {
+
+                discount = 20;
+
+            } else if (quantity >= 25) {
+
+                discount = 15;
+
+            } else if (quantity >= 10) {
+
+                discount = 10;
+
+            } else if (quantity >= 5) {
+
+                discount = 5;
+
+            }
+
+
+            result.innerHTML = `
+                <div class="deal-result">
+
+                    <h3>🤖 DealMate AI Response</h3>
+
+                    <p>
+                        Your offer of
+                        <strong>₹${offerPrice.toLocaleString("en-IN")}</strong>
+                        for
+                        <strong>${quantity}</strong>
+                        units has been received.
+                    </p>
+
+                    <p>
+                        Suggested bulk discount:
+                        <strong>${discount}%</strong>
+                    </p>
+
+                    ${
+                        discount > 0
+                        ? `
+                            <p class="success-message">
+                                🎉 Great! DealMate found a better
+                                bulk deal for you.
+                            </p>
+                        `
+                        : `
+                            <p>
+                                💡 Increase the quantity to unlock
+                                a better bulk discount.
+                            </p>
+                        `
+                    }
+
+                    <button
+                        onclick="acceptBulkDeal()"
+                        class="accept-deal-btn"
+                    >
+                        Accept Deal
+                    </button>
+
+                </div>
+            `;
+
+            result.style.display = "block";
+        }
+
+
+        /*
+         * Accept deal
+         */
+        function acceptBulkDeal() {
+
+            alert(
+                "🎉 Bulk deal accepted successfully!"
+            );
+
+        }
+
+
+        /*
+         * Load products from script.js
+         */
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
+
+                /*
+                 * This function checks whether
+                 * script.js already provides products.
+                 */
+
+                if (
+                    typeof products !== "undefined" &&
+                    Array.isArray(products)
+                ) {
+
+                    const grid =
+                        document.getElementById(
+                            "bulkProductGrid"
+                        );
+
+                    if (!grid) return;
+
+
+                    grid.innerHTML = "";
+
+
+                    products.forEach(function (product) {
+
+                        const card =
+                            document.createElement("div");
+
+                        card.className =
+                            "bulk-product-card";
+
+
+                        card.innerHTML = `
+
+                            <div class="bulk-product-icon">
+                                ${
+                                    product.icon ||
+                                    "🛍️"
+                                }
+                            </div>
+
+                            <h3>
+                                ${product.name}
+                            </h3>
+
+                            <p class="bulk-price">
+                                ₹${Number(
+                                    product.price || 0
+                                ).toLocaleString("en-IN")}
+                            </p>
+
+                            <p>
+                                ${product.description || ""}
+                            </p>
+
+                            <button
+                                onclick="selectBulkProduct(
+                                    '${String(product.id)}'
+                                )"
+                            >
+                                Select Product
+                            </button>
+
+                        `;
+
+
+                        grid.appendChild(card);
+
+                    });
+
+                }
+
+            }
+        );
+
+
+        /*
+         * Select product
+         */
+        function selectBulkProduct(productId) {
+
+            if (
+                typeof products === "undefined" ||
+                !Array.isArray(products)
+            ) {
+                return;
+            }
+
+
+            const product =
+                products.find(
+                    p => String(p.id) === String(productId)
+                );
+
+
+            if (!product) {
+
+                return;
+            }
+
+
+            const selectedText =
+                document.getElementById(
+                    "selectedProductText"
+                );
+
+
+            selectedText.innerHTML = `
+                Selected:
+                <strong>${product.name}</strong>
+                —
+                ₹${Number(
+                    product.price || 0
+                ).toLocaleString("en-IN")}
+            `;
+
+
+            /*
+             * Automatically suggest an offer
+             */
+
+            const quantity =
+                Number(
+                    document.getElementById(
+                        "bulkQuantity"
+                    ).value
+                ) || 10;
+
+
+            const suggestedPrice =
+                Math.round(
+                    Number(product.price || 0) *
+                    quantity *
+                    0.90
+                );
+
+
+            document.getElementById(
+                "offerPrice"
+            ).value = suggestedPrice;
+
+
+            document.getElementById(
+                "negotiationSection"
+            ).scrollIntoView({
+                behavior: "smooth"
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>
