@@ -1,9 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Bulk Deals | Pocket Deal</title>
+
     <link rel="stylesheet" href="style.css">
 </head>
 
@@ -18,135 +21,433 @@
     <nav>
         <a href="index.html">Home</a>
         <a href="products.html">Shop</a>
-        <a href="bulk.html">Bulk Deals</a>
-        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+        <a href="bulk.html" class="active">Bulk Deals</a>
+
+        <a href="cart.html">
+            🛒 Cart <b id="cartCount">0</b>
+        </a>
+
+        <a href="login.html">Login</a>
     </nav>
 
 </header>
 
+
 <main class="section">
 
-    <div class="bulk-page">
+    <div class="shop-top">
 
-        <div class="bulk-intro">
+        <div>
 
-            <span class="badge">📦 Bulk Shopping</span>
+            <span class="small-label">
+                POCKET DEAL
+            </span>
 
-            <h1>Need a larger quantity?</h1>
+            <h1>Bulk Deals</h1>
 
             <p>
-                Tell us what you need. Pocket Deal can provide
-                a special bulk price for larger orders.
+                Buy more. Negotiate better. Save more.
             </p>
-
-            <div class="discount-grid">
-
-                <div>
-                    <strong>5+</strong>
-                    <span>5% potential saving</span>
-                </div>
-
-                <div>
-                    <strong>10+</strong>
-                    <span>10% potential saving</span>
-                </div>
-
-                <div>
-                    <strong>25+</strong>
-                    <span>15% potential saving</span>
-                </div>
-
-                <div>
-                    <strong>50+</strong>
-                    <span>Custom quote</span>
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="form-card">
-
-            <h2>Request a Bulk Deal</h2>
-
-            <form onsubmit="submitBulkRequest(event)">
-
-                <label>Select Product</label>
-
-                <select id="bulkProduct" required>
-                    <option value="">Choose a product</option>
-                </select>
-
-                <label>Required Quantity</label>
-
-                <input
-                    type="number"
-                    id="bulkQuantity"
-                    min="5"
-                    placeholder="Minimum 5"
-                    required
-                >
-
-                <label>Your Name</label>
-
-                <input
-                    type="text"
-                    id="bulkName"
-                    placeholder="Full name"
-                    required
-                >
-
-                <label>Email</label>
-
-                <input
-                    type="email"
-                    id="bulkEmail"
-                    placeholder="your@email.com"
-                    required
-                >
-
-                <label>Phone</label>
-
-                <input
-                    type="tel"
-                    id="bulkPhone"
-                    placeholder="10 digit mobile number"
-                    pattern="[0-9]{10}"
-                    required
-                >
-
-                <label>Delivery Location</label>
-
-                <textarea
-                    id="bulkLocation"
-                    placeholder="Enter delivery address/location"
-                    required
-                ></textarea>
-
-                <label>Additional Message</label>
-
-                <textarea
-                    id="bulkMessage"
-                    placeholder="Any special requirement? (optional)"
-                ></textarea>
-
-                <button class="btn-primary full" type="submit">
-                    Submit Bulk Request
-                </button>
-
-            </form>
 
         </div>
 
     </div>
 
+
+    <!-- BULK DEAL INFO -->
+
+    <div class="bulk-cards">
+
+        <div class="bulk-card">
+
+            <h2>5+</h2>
+
+            <p>
+                5% potential saving
+            </p>
+
+        </div>
+
+
+        <div class="bulk-card">
+
+            <h2>10+</h2>
+
+            <p>
+                10% potential saving
+            </p>
+
+        </div>
+
+
+        <div class="bulk-card">
+
+            <h2>25+</h2>
+
+            <p>
+                15% potential saving
+            </p>
+
+        </div>
+
+
+        <div class="bulk-card">
+
+            <h2>50+</h2>
+
+            <p>
+                Custom quote
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- BULK DEAL FORM -->
+
+    <div class="bulk-form">
+
+        <div class="bulk-form-header">
+
+            <h2>
+                Choose a product
+            </h2>
+
+            <p>
+                Select a product and tell us how many you need.
+            </p>
+
+        </div>
+
+
+        <!-- PRODUCT -->
+
+        <div class="form-group">
+
+            <label for="productSelect">
+                Product
+            </label>
+
+            <select id="productSelect">
+
+                <option value="">
+                    Choose a product
+                </option>
+
+            </select>
+
+        </div>
+
+
+        <!-- QUANTITY -->
+
+        <div class="form-group">
+
+            <label for="bulkQuantity">
+                Required Quantity
+            </label>
+
+            <input
+                type="number"
+                id="bulkQuantity"
+                min="5"
+                placeholder="Minimum 5"
+            >
+
+        </div>
+
+
+        <!-- NAME -->
+
+        <div class="form-group">
+
+            <label for="bulkName">
+                Your Name
+            </label>
+
+            <input
+                type="text"
+                id="bulkName"
+                placeholder="Full name"
+            >
+
+        </div>
+
+
+        <!-- EMAIL -->
+
+        <div class="form-group">
+
+            <label for="bulkEmail">
+                Email
+            </label>
+
+            <input
+                type="email"
+                id="bulkEmail"
+                placeholder="your@email.com"
+            >
+
+        </div>
+
+
+        <!-- PHONE -->
+
+        <div class="form-group">
+
+            <label for="bulkPhone">
+                Phone
+            </label>
+
+            <input
+                type="tel"
+                id="bulkPhone"
+                placeholder="10-digit mobile number"
+            >
+
+        </div>
+
+
+        <!-- MESSAGE -->
+
+        <div class="form-group">
+
+            <label for="bulkMessage">
+                Additional Requirements
+            </label>
+
+            <textarea
+                id="bulkMessage"
+                rows="4"
+                placeholder="Tell us about your requirements..."
+            ></textarea>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+
+        <button
+            class="bulk-submit"
+            onclick="submitBulkDeal()">
+
+            🤝 Request Bulk Deal
+
+        </button>
+
+    </div>
+
+
+    <!-- RESULT -->
+
+    <div
+        id="bulkResult"
+        class="bulk-result">
+    </div>
+
 </main>
 
+
 <footer>
-    <h2>PD | Pocket Deal</h2>
-    <p>Shop smarter. Save better.</p>
+
+    <h2>
+        PD | Pocket Deal
+    </h2>
+
+    <p>
+        Shop smarter. Negotiate better.
+    </p>
+
 </footer>
 
+
 <script src="script.js"></script>
+
+
+<script>
+
+// =====================================================
+// BULK DEAL
+// =====================================================
+
+function submitBulkDeal() {
+
+    const productSelect =
+        document.getElementById("productSelect");
+
+    const quantity =
+        document.getElementById("bulkQuantity");
+
+    const name =
+        document.getElementById("bulkName");
+
+    const email =
+        document.getElementById("bulkEmail");
+
+    const phone =
+        document.getElementById("bulkPhone");
+
+    const message =
+        document.getElementById("bulkMessage");
+
+    const result =
+        document.getElementById("bulkResult");
+
+
+    if (!productSelect.value) {
+
+        alert("Please choose a product.");
+
+        return;
+
+    }
+
+
+    if (
+        !quantity.value ||
+        Number(quantity.value) < 5
+    ) {
+
+        alert(
+            "Minimum bulk quantity is 5."
+        );
+
+        return;
+
+    }
+
+
+    if (!name.value.trim()) {
+
+        alert("Please enter your name.");
+
+        return;
+
+    }
+
+
+    if (!email.value.trim()) {
+
+        alert("Please enter your email.");
+
+        return;
+
+    }
+
+
+    if (!phone.value.trim()) {
+
+        alert("Please enter your phone number.");
+
+        return;
+
+    }
+
+
+    const selectedProduct =
+        products.find(
+            product =>
+                product.id ===
+                Number(productSelect.value)
+        );
+
+
+    if (!selectedProduct) {
+
+        alert("Product not found.");
+
+        return;
+
+    }
+
+
+    const qty =
+        Number(quantity.value);
+
+
+    let discount = 5;
+
+
+    if (qty >= 50) {
+
+        discount = 15;
+
+    }
+
+    else if (qty >= 25) {
+
+        discount = 15;
+
+    }
+
+    else if (qty >= 10) {
+
+        discount = 10;
+
+    }
+
+
+    const estimatedPrice =
+        Math.round(
+            selectedProduct.price *
+            (1 - discount / 100)
+        );
+
+
+    result.innerHTML = `
+
+        <div class="bulk-success">
+
+            <div class="success-icon">
+                🎉
+            </div>
+
+            <h2>
+                Bulk Deal Request Sent!
+            </h2>
+
+            <p>
+                Our Pocket Deal team will contact you
+                with the best possible quotation.
+            </p>
+
+            <div class="bulk-summary">
+
+                <p>
+                    <strong>Product:</strong>
+                    ${selectedProduct.name}
+                </p>
+
+                <p>
+                    <strong>Quantity:</strong>
+                    ${qty}
+                </p>
+
+                <p>
+                    <strong>Potential discount:</strong>
+                    ${discount}%
+                </p>
+
+                <p>
+                    <strong>Estimated price:</strong>
+                    ₹${estimatedPrice.toLocaleString("en-IN")}
+                </p>
+
+            </div>
+
+        </div>
+
+    `;
+
+
+    result.scrollIntoView({
+        behavior: "smooth"
+    });
+
+}
+
+</script>
+
 </body>
 </html>
