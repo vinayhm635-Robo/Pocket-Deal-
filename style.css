@@ -1,320 +1,146 @@
-/* =====================================================
-   POCKET DEAL PRODUCT PAGE
-   ===================================================== */
+/* ================================
+   BULK DEALS
+================================ */
 
-.small-label {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    opacity: 0.7;
-    margin-bottom: 8px;
+.bulk-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin: 30px 0;
 }
 
-
-.category-heading {
-    margin-top: 35px;
-    margin-bottom: 18px;
+.bulk-card {
+    padding: 25px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 18px;
+    background: rgba(255,255,255,0.04);
 }
 
-
-.category-heading h2 {
-    margin-bottom: 5px;
+.bulk-card h2 {
+    margin: 0 0 8px;
+    font-size: 32px;
 }
 
-
-.category-heading p {
+.bulk-card p {
     margin: 0;
+    opacity: 0.7;
+}
+
+.bulk-form {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 30px;
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 22px;
+    background: rgba(255,255,255,0.04);
+}
+
+.bulk-form-header {
+    margin-bottom: 25px;
+}
+
+.bulk-form-header h2 {
+    margin-bottom: 7px;
+}
+
+.bulk-form-header p {
     opacity: 0.65;
 }
 
-
-.filters {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 35px;
+.form-group {
+    margin-bottom: 20px;
 }
 
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 700;
+}
 
-.filters button {
-    border: 1px solid rgba(255,255,255,0.12);
-    background: rgba(255,255,255,0.05);
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 14px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
     color: inherit;
-    padding: 11px 17px;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.2s;
+    font-size: 15px;
 }
 
+.form-group select option {
+    color: #111;
+    background: white;
+}
 
-.filters button:hover {
+.form-group textarea {
+    resize: vertical;
+}
+
+.bulk-submit {
+    width: 100%;
+    padding: 15px;
+    border: none;
+    border-radius: 12px;
+    background: #e8a33d;
+    color: #15120e;
+    font-size: 16px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.bulk-submit:hover {
     transform: translateY(-2px);
 }
 
-
-.filters button.active {
-    background: #e8a33d;
-    color: #15120e;
-    border-color: #e8a33d;
-    font-weight: 700;
+.bulk-result {
+    max-width: 720px;
+    margin: 30px auto;
 }
 
-
-.products-title {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-
-.products-title h2 {
-    margin: 0;
-}
-
-
-#productCount {
-    opacity: 0.6;
-    font-size: 14px;
-}
-
-
-/* PRODUCT GRID */
-
-.product-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-    gap: 20px;
-}
-
-
-/* PRODUCT CARD */
-
-.product-card {
-    border: 1px solid rgba(255,255,255,0.10);
-    border-radius: 18px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.035);
-    transition: 0.25s;
-}
-
-
-.product-card:hover {
-    transform: translateY(-5px);
-    border-color: rgba(232,163,61,0.55);
-}
-
-
-/* PRODUCT IMAGE */
-
-.product-image {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(255,255,255,0.045);
-}
-
-
-.product-image span {
-    font-size: 75px;
-}
-
-
-/* PRODUCT INFO */
-
-.product-info {
-    padding: 18px;
-}
-
-
-.product-category {
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 700;
-    opacity: 0.65;
-    margin-bottom: 8px;
-    text-transform: uppercase;
-    letter-spacing: 0.7px;
-}
-
-
-.product-info h3 {
-    margin: 4px 0 9px;
-    font-size: 18px;
-}
-
-
-.product-description {
-    font-size: 13px;
-    line-height: 1.5;
-    opacity: 0.65;
-    min-height: 58px;
-}
-
-
-/* PRICE */
-
-.product-price {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 15px 0;
-}
-
-
-.product-price strong {
-    font-size: 21px;
-}
-
-
-.product-price del {
-    opacity: 0.45;
-    font-size: 13px;
-}
-
-
-.discount {
-    font-size: 11px;
-    font-weight: 700;
-    padding: 4px 7px;
-    border-radius: 5px;
-    background: rgba(127,168,138,0.18);
-}
-
-
-/* BUTTONS */
-
-.product-actions {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 8px;
-}
-
-
-.product-actions button {
-    padding: 11px 8px;
-    border-radius: 9px;
-    border: none;
-    cursor: pointer;
-    font-weight: 700;
-}
-
-
-.view-btn {
-    background: rgba(255,255,255,0.08);
-    color: inherit;
-}
-
-
-.negotiate-btn {
-    background: #e8a33d;
-    color: #15120e;
-}
-
-
-/* NO PRODUCTS */
-
-.no-products {
-    grid-column: 1 / -1;
+.bulk-success {
+    padding: 30px;
     text-align: center;
-    padding: 60px 20px;
+    border-radius: 20px;
+    border: 1px solid rgba(127,168,138,0.3);
+    background: rgba(127,168,138,0.08);
 }
 
-
-.no-products-icon {
-    font-size: 55px;
-    margin-bottom: 10px;
+.success-icon {
+    font-size: 50px;
 }
 
-
-.no-products button {
-    border: none;
-    padding: 12px 20px;
-    border-radius: 8px;
-    background: #e8a33d;
-    cursor: pointer;
-    font-weight: 700;
+.bulk-summary {
+    margin-top: 20px;
+    padding: 18px;
+    text-align: left;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.05);
 }
-
-
-/* MOBILE */
-
-@media (max-width: 1000px) {
-
-    .product-grid {
-        grid-template-columns:
-            repeat(3, minmax(0, 1fr));
-    }
-
-}
-
 
 @media (max-width: 700px) {
 
-    .product-grid {
-        grid-template-columns:
-            repeat(2, minmax(0, 1fr));
-        gap: 12px;
+    .bulk-cards {
+        grid-template-columns: 1fr 1fr;
     }
 
-
-    .product-image {
-        height: 140px;
-    }
-
-
-    .product-image span {
-        font-size: 55px;
-    }
-
-
-    .product-info {
-        padding: 13px;
-    }
-
-
-    .product-info h3 {
-        font-size: 15px;
-    }
-
-
-    .product-description {
-        font-size: 12px;
-    }
-
-
-    .product-price strong {
-        font-size: 17px;
-    }
-
-
-    .product-actions {
-        grid-template-columns: 1fr;
+    .bulk-form {
+        padding: 20px;
     }
 
 }
 
-
 @media (max-width: 450px) {
 
-    .product-grid {
+    .bulk-cards {
         grid-template-columns: 1fr 1fr;
+        gap: 10px;
     }
 
-
-    .filters {
-        gap: 7px;
-    }
-
-
-    .filters button {
-        padding: 9px 11px;
-        font-size: 12px;
+    .bulk-card {
+        padding: 18px;
     }
 
 }
