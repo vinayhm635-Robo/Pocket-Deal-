@@ -1,10 +1,10 @@
 // =====================================================
-// POCKET DEAL
-// PRODUCT DATA
+// POCKET DEAL - PRODUCTS
 // =====================================================
 
 const products = [
 
+    // LAPTOPS
     {
         id: 1,
         name: "Acer Aspire 5 Laptop",
@@ -12,8 +12,7 @@ const products = [
         price: 54999,
         oldPrice: 62999,
         icon: "💻",
-        description:
-            "Powerful laptop for coding, study, office work and entertainment."
+        description: "Powerful laptop for coding, study, office work and entertainment."
     },
 
     {
@@ -23,8 +22,7 @@ const products = [
         price: 58999,
         oldPrice: 67999,
         icon: "💻",
-        description:
-            "Reliable laptop for everyday productivity and entertainment."
+        description: "Reliable laptop for everyday productivity and entertainment."
     },
 
     {
@@ -34,8 +32,7 @@ const products = [
         price: 62999,
         oldPrice: 71999,
         icon: "💻",
-        description:
-            "Performance laptop for students, coding and productivity."
+        description: "Performance laptop suitable for students and coding."
     },
 
     {
@@ -45,11 +42,11 @@ const products = [
         price: 69999,
         oldPrice: 79999,
         icon: "🎮",
-        description:
-            "Powerful gaming laptop with dedicated graphics."
+        description: "Powerful gaming laptop with dedicated graphics."
     },
 
 
+    // MOBILES
     {
         id: 5,
         name: "SmartPhone X1",
@@ -57,8 +54,7 @@ const products = [
         price: 18999,
         oldPrice: 22999,
         icon: "📱",
-        description:
-            "Modern smartphone with excellent performance and camera."
+        description: "Modern smartphone with excellent performance and camera."
     },
 
     {
@@ -68,8 +64,7 @@ const products = [
         price: 27999,
         oldPrice: 32999,
         icon: "📱",
-        description:
-            "Premium smartphone with powerful performance."
+        description: "Premium smartphone with powerful performance."
     },
 
     {
@@ -79,11 +74,11 @@ const products = [
         price: 21999,
         oldPrice: 26999,
         icon: "📱",
-        description:
-            "Fast 5G smartphone with powerful processor and display."
+        description: "Fast 5G smartphone with powerful processor and display."
     },
 
 
+    // HEADPHONES
     {
         id: 8,
         name: "Wireless Pro Headphones",
@@ -91,8 +86,7 @@ const products = [
         price: 2999,
         oldPrice: 4999,
         icon: "🎧",
-        description:
-            "Comfortable wireless headphones with clear sound."
+        description: "Comfortable wireless headphones with clear sound."
     },
 
     {
@@ -102,8 +96,7 @@ const products = [
         price: 1999,
         oldPrice: 3499,
         icon: "🎧",
-        description:
-            "Deep bass and comfortable wireless listening."
+        description: "Deep bass and comfortable wireless listening."
     },
 
     {
@@ -113,11 +106,11 @@ const products = [
         price: 3999,
         oldPrice: 5999,
         icon: "🎧",
-        description:
-            "Gaming headset with immersive sound."
+        description: "Gaming headset with immersive sound."
     },
 
 
+    // SHOES
     {
         id: 11,
         name: "Running Sports Shoes",
@@ -125,8 +118,7 @@ const products = [
         price: 2499,
         oldPrice: 3999,
         icon: "👟",
-        description:
-            "Lightweight running shoes for daily workouts."
+        description: "Lightweight running shoes for daily workouts."
     },
 
     {
@@ -136,8 +128,7 @@ const products = [
         price: 1799,
         oldPrice: 2999,
         icon: "👟",
-        description:
-            "Stylish casual shoes for everyday use."
+        description: "Stylish casual shoes for everyday use."
     },
 
     {
@@ -147,11 +138,11 @@ const products = [
         price: 3299,
         oldPrice: 4999,
         icon: "👟",
-        description:
-            "Premium lightweight shoes designed for comfort."
+        description: "Premium lightweight shoes designed for comfort."
     },
 
 
+    // SMARTWATCH
     {
         id: 14,
         name: "Smart Watch Pro",
@@ -159,8 +150,7 @@ const products = [
         price: 3499,
         oldPrice: 5999,
         icon: "⌚",
-        description:
-            "Smartwatch with fitness tracking and notifications."
+        description: "Smartwatch with fitness tracking and notifications."
     },
 
     {
@@ -170,11 +160,11 @@ const products = [
         price: 1499,
         oldPrice: 2499,
         icon: "⌚",
-        description:
-            "Lightweight fitness band for daily activity tracking."
+        description: "Lightweight fitness band for daily activity tracking."
     },
 
 
+    // ACCESSORIES
     {
         id: 16,
         name: "Pocket Deal Backpack",
@@ -182,8 +172,7 @@ const products = [
         price: 1299,
         oldPrice: 1999,
         icon: "🎒",
-        description:
-            "Durable backpack for college, office and travel."
+        description: "Durable backpack for college, office and travel."
     },
 
     {
@@ -193,11 +182,11 @@ const products = [
         price: 1599,
         oldPrice: 2499,
         icon: "🔋",
-        description:
-            "High-capacity power bank with fast charging."
+        description: "High-capacity power bank with fast charging."
     },
 
 
+    // ELECTRONICS
     {
         id: 18,
         name: "Bluetooth Speaker",
@@ -205,11 +194,21 @@ const products = [
         price: 1999,
         oldPrice: 2999,
         icon: "🔊",
-        description:
-            "Portable Bluetooth speaker with powerful audio."
+        description: "Portable Bluetooth speaker with powerful audio."
     }
 
 ];
+
+
+// =====================================================
+// MONEY FORMAT
+// =====================================================
+
+function money(value) {
+
+    return "₹" + Number(value).toLocaleString("en-IN");
+
+}
 
 
 // =====================================================
@@ -220,14 +219,11 @@ function getCart() {
 
     try {
 
-        const cart =
-            JSON.parse(
-                localStorage.getItem("pocketDealCart")
-            );
+        const cart = JSON.parse(
+            localStorage.getItem("pocketDealCart")
+        );
 
-        return Array.isArray(cart)
-            ? cart
-            : [];
+        return Array.isArray(cart) ? cart : [];
 
     } catch (error) {
 
@@ -254,12 +250,14 @@ function updateCartCount() {
 
     const cart = getCart();
 
-    const count =
-        cart.reduce(
-            (total, item) =>
-                total + (item.quantity || 1),
-            0
-        );
+    const count = cart.reduce(
+        function(total, item) {
+
+            return total + (item.quantity || 1);
+
+        },
+        0
+    );
 
     const element =
         document.getElementById("cartCount");
@@ -274,15 +272,11 @@ function updateCartCount() {
 
 
 // =====================================================
-// CURRENT CATEGORY
+// PRODUCTS PAGE
 // =====================================================
 
 let currentCategory = "All";
 
-
-// =====================================================
-// DISPLAY PRODUCTS
-// =====================================================
 
 function displayProducts() {
 
@@ -299,17 +293,14 @@ function displayProducts() {
     const searchInput =
         document.getElementById("searchInput");
 
-
     const search =
         searchInput
-            ? searchInput.value
-                .toLowerCase()
-                .trim()
+            ? searchInput.value.toLowerCase().trim()
             : "";
 
 
     const filteredProducts =
-        products.filter(product => {
+        products.filter(function(product) {
 
             const categoryMatch =
                 currentCategory === "All" ||
@@ -317,17 +308,9 @@ function displayProducts() {
 
 
             const searchMatch =
-                product.name
-                    .toLowerCase()
-                    .includes(search) ||
-
-                product.category
-                    .toLowerCase()
-                    .includes(search) ||
-
-                product.description
-                    .toLowerCase()
-                    .includes(search);
+                product.name.toLowerCase().includes(search) ||
+                product.category.toLowerCase().includes(search) ||
+                product.description.toLowerCase().includes(search);
 
 
             return categoryMatch && searchMatch;
@@ -335,21 +318,16 @@ function displayProducts() {
         });
 
 
-    // PRODUCT COUNT
-
     const countElement =
         document.getElementById("productCount");
 
     if (countElement) {
 
         countElement.textContent =
-            filteredProducts.length +
-            " products";
+            filteredProducts.length + " products";
 
     }
 
-
-    // NO PRODUCTS
 
     if (filteredProducts.length === 0) {
 
@@ -361,19 +339,14 @@ function displayProducts() {
                     🔍
                 </div>
 
-                <h2>
-                    No products found
-                </h2>
+                <h2>No products found</h2>
 
                 <p>
-                    Try another search or category.
+                    Try another product or category.
                 </p>
 
-                <button
-                    onclick="resetProducts()">
-
+                <button onclick="resetProducts()">
                     Show All Products
-
                 </button>
 
             </div>
@@ -385,17 +358,13 @@ function displayProducts() {
     }
 
 
-    // PRODUCT CARDS
-
     productList.innerHTML =
-        filteredProducts.map(product => {
+        filteredProducts.map(function(product) {
 
             const discount =
                 Math.round(
                     (
-                        (product.oldPrice -
-                        product.price)
-                        /
+                        (product.oldPrice - product.price) /
                         product.oldPrice
                     ) * 100
                 );
@@ -403,62 +372,42 @@ function displayProducts() {
 
             return `
 
-                <div class="product-card">
-
+                <article class="product-card">
 
                     <div class="product-image">
-
-                        <span>
-                            ${product.icon}
-                        </span>
-
+                        <span>${product.icon}</span>
                     </div>
 
 
                     <div class="product-info">
 
-
                         <span class="product-category">
-
                             ${product.category}
-
                         </span>
 
 
                         <h3>
-
                             ${product.name}
-
                         </h3>
 
 
                         <p class="product-description">
-
                             ${product.description}
-
                         </p>
 
 
                         <div class="product-price">
 
                             <strong>
-
                                 ${money(product.price)}
-
                             </strong>
 
-
                             <del>
-
                                 ${money(product.oldPrice)}
-
                             </del>
 
-
                             <span class="discount">
-
                                 ${discount}% OFF
-
                             </span>
 
                         </div>
@@ -466,12 +415,9 @@ function displayProducts() {
 
                         <div class="product-actions">
 
-
                             <button
                                 class="view-btn"
-                                onclick="
-                                    viewProduct(${product.id})
-                                ">
+                                onclick="viewProduct(${product.id})">
 
                                 View Product
 
@@ -480,21 +426,17 @@ function displayProducts() {
 
                             <button
                                 class="negotiate-btn"
-                                onclick="
-                                    negotiateProduct(${product.id})
-                                ">
+                                onclick="negotiateProduct(${product.id})">
 
                                 🤝 Negotiate
 
                             </button>
 
-
                         </div>
-
 
                     </div>
 
-                </div>
+                </article>
 
             `;
 
@@ -504,20 +446,7 @@ function displayProducts() {
 
 
 // =====================================================
-// MONEY
-// =====================================================
-
-function money(value) {
-
-    return "₹" +
-        Number(value)
-            .toLocaleString("en-IN");
-
-}
-
-
-// =====================================================
-// CATEGORY FILTER
+// FILTER
 // =====================================================
 
 function filterCategory(category) {
@@ -526,23 +455,20 @@ function filterCategory(category) {
 
 
     const buttons =
-        document.querySelectorAll(
-            ".filters button"
-        );
+        document.querySelectorAll(".filters button");
 
 
-    buttons.forEach(button => {
+    buttons.forEach(function(button) {
 
         button.classList.remove("active");
 
     });
 
 
-    buttons.forEach(button => {
+    buttons.forEach(function(button) {
 
         const text =
-            button.textContent
-                .toLowerCase();
+            button.textContent.toLowerCase();
 
 
         if (
@@ -554,11 +480,8 @@ function filterCategory(category) {
 
         }
 
-
         else if (
-            text.includes(
-                category.toLowerCase()
-            )
+            text.includes(category.toLowerCase())
         ) {
 
             button.classList.add("active");
@@ -573,22 +496,18 @@ function filterCategory(category) {
 }
 
 
-// =====================================================
-// RESET
-// =====================================================
-
 function resetProducts() {
 
     currentCategory = "All";
 
 
-    const searchInput =
+    const search =
         document.getElementById("searchInput");
 
 
-    if (searchInput) {
+    if (search) {
 
-        searchInput.value = "";
+        search.value = "";
 
     }
 
@@ -620,13 +539,16 @@ function addToCart(
 ) {
 
     const product =
-        products.find(
-            product =>
-                product.id === Number(id)
-        );
+        products.find(function(item) {
+
+            return item.id === Number(id);
+
+        });
 
 
     if (!product) {
+
+        alert("Product not found.");
 
         return;
 
@@ -637,15 +559,15 @@ function addToCart(
 
 
     const existing =
-        cart.find(
-            item =>
-                item.id === product.id
-        );
+        cart.find(function(item) {
+
+            return item.id === product.id;
+
+        });
 
 
     const finalPrice =
-        negotiatedPrice ||
-        product.price;
+        negotiatedPrice || product.price;
 
 
     if (existing) {
@@ -694,16 +616,17 @@ function addToCart(
 
 
 // =====================================================
-// NEGOTIATE
+// NEGOTIATION
 // =====================================================
 
 function negotiateProduct(id) {
 
     const product =
-        products.find(
-            product =>
-                product.id === Number(id)
-        );
+        products.find(function(item) {
+
+            return item.id === Number(id);
+
+        });
 
 
     if (!product) {
@@ -725,7 +648,7 @@ function negotiateProduct(id) {
             money(product.price) +
             "\n\n" +
 
-            "Enter your offer:"
+            "Enter your offer price:"
 
         );
 
@@ -746,43 +669,43 @@ function negotiateProduct(id) {
         offerPrice <= 0
     ) {
 
-        alert(
-            "Please enter a valid price."
-        );
+        alert("Please enter a valid price.");
 
         return;
 
     }
 
 
-    // OFFER ACCEPTED
-
     const minimumPrice =
-        Math.round(
-            product.price * 0.90
-        );
+        Math.round(product.price * 0.90);
 
+
+    // ACCEPT OFFER
 
     if (offerPrice >= minimumPrice) {
 
-        alert(
+        const accepted =
+            confirm(
 
-            "🎉 DEAL ACCEPTED!\n\n" +
+                "🎉 Pocket Deal AI\n\n" +
 
-            product.name +
-            "\n" +
+                "Your offer of " +
+                money(offerPrice) +
+                " is accepted!\n\n" +
 
-            "Your price: " +
-            money(offerPrice)
+                "Add this deal to your cart?"
 
-        );
+            );
 
 
-        addToCart(
-            product.id,
-            offerPrice
-        );
+        if (accepted) {
 
+            addToCart(
+                product.id,
+                offerPrice
+            );
+
+        }
 
         return;
 
@@ -793,17 +716,14 @@ function negotiateProduct(id) {
 
     const counterOffer =
         Math.round(
-            (
-                product.price +
-                offerPrice
-            ) / 2
+            (product.price + offerPrice) / 2
         );
 
 
-    const accept =
+    const acceptCounter =
         confirm(
 
-            "🤖 SELLER COUNTER OFFER\n\n" +
+            "🤖 Seller Counter Offer\n\n" +
 
             "Your offer: " +
             money(offerPrice) +
@@ -813,12 +733,12 @@ function negotiateProduct(id) {
             money(counterOffer) +
             "\n\n" +
 
-            "Accept the seller's offer?"
+            "Accept this deal?"
 
         );
 
 
-    if (accept) {
+    if (acceptCounter) {
 
         addToCart(
             product.id,
@@ -826,9 +746,7 @@ function negotiateProduct(id) {
         );
 
 
-        alert(
-            "🎉 Deal completed!"
-        );
+        alert("🎉 Deal completed!");
 
     }
 
@@ -836,15 +754,13 @@ function negotiateProduct(id) {
 
 
 // =====================================================
-// PRODUCT DETAILS PAGE
+// PRODUCT DETAIL PAGE
 // =====================================================
 
 function displaySingleProduct() {
 
     const container =
-        document.getElementById(
-            "productDetails"
-        );
+        document.getElementById("productDetails");
 
 
     if (!container) {
@@ -861,14 +777,15 @@ function displaySingleProduct() {
 
 
     const id =
-        params.get("id");
+        Number(params.get("id"));
 
 
     const product =
-        products.find(
-            item =>
-                item.id === Number(id)
-        );
+        products.find(function(item) {
+
+            return item.id === id;
+
+        });
 
 
     if (!product) {
@@ -877,14 +794,10 @@ function displaySingleProduct() {
 
             <div class="no-products">
 
-                <h2>
-                    Product not found
-                </h2>
+                <h2>Product not found</h2>
 
                 <a href="products.html">
-
                     ← Back to Products
-
                 </a>
 
             </div>
@@ -899,9 +812,7 @@ function displaySingleProduct() {
     const discount =
         Math.round(
             (
-                (product.oldPrice -
-                product.price)
-                /
+                (product.oldPrice - product.price) /
                 product.oldPrice
             ) * 100
         );
@@ -911,58 +822,40 @@ function displaySingleProduct() {
 
         <div class="single-product">
 
-
             <div class="single-product-image">
-
                 ${product.icon}
-
             </div>
 
 
             <div class="single-product-info">
 
-
                 <span class="product-category">
-
                     ${product.category}
-
                 </span>
 
 
                 <h1>
-
                     ${product.name}
-
                 </h1>
 
 
                 <p>
-
                     ${product.description}
-
                 </p>
 
 
                 <div class="single-price">
 
                     <strong>
-
                         ${money(product.price)}
-
                     </strong>
 
-
                     <del>
-
                         ${money(product.oldPrice)}
-
                     </del>
 
-
                     <span class="discount">
-
                         ${discount}% OFF
-
                     </span>
 
                 </div>
@@ -970,11 +863,8 @@ function displaySingleProduct() {
 
                 <div class="single-actions">
 
-
                     <button
-                        onclick="
-                            addToCart(${product.id})
-                        ">
+                        onclick="addToCart(${product.id})">
 
                         🛒 Add to Deal Bag
 
@@ -982,17 +872,13 @@ function displaySingleProduct() {
 
 
                     <button
-                        onclick="
-                            negotiateProduct(${product.id})
-                        ">
+                        onclick="negotiateProduct(${product.id})">
 
                         🤝 Negotiate Price
 
                     </button>
 
-
                 </div>
-
 
             </div>
 
@@ -1010,9 +896,7 @@ function displaySingleProduct() {
 function displayCart() {
 
     const container =
-        document.getElementById(
-            "cartList"
-        );
+        document.getElementById("cartList");
 
 
     if (!container) {
@@ -1022,8 +906,7 @@ function displayCart() {
     }
 
 
-    const cart =
-        getCart();
+    const cart = getCart();
 
 
     if (cart.length === 0) {
@@ -1032,9 +915,7 @@ function displayCart() {
 
             <div class="empty-cart">
 
-                <div>
-                    🛒
-                </div>
+                <div>🛒</div>
 
                 <h2>
                     Your Deal Bag is empty
@@ -1046,9 +927,7 @@ function displayCart() {
                 </p>
 
                 <a href="products.html">
-
                     Start Shopping
-
                 </a>
 
             </div>
@@ -1064,117 +943,78 @@ function displayCart() {
 
 
     container.innerHTML =
-        cart.map(
-            (item, index) => {
+        cart.map(function(item, index) {
 
-                const quantity =
-                    item.quantity || 1;
-
-
-                const itemTotal =
-                    item.price * quantity;
+            const quantity =
+                item.quantity || 1;
 
 
-                total += itemTotal;
+            total +=
+                item.price * quantity;
 
 
-                return `
+            return `
 
-                    <div class="cart-item">
+                <div class="cart-item">
 
-
-                        <div class="cart-item-icon">
-
-                            ${item.icon}
-
-                        </div>
+                    <div class="cart-item-icon">
+                        ${item.icon}
+                    </div>
 
 
-                        <div class="cart-item-info">
+                    <div class="cart-item-info">
 
-                            <h3>
+                        <h3>
+                            ${item.name}
+                        </h3>
 
-                                ${item.name}
+                        <p>
+                            ${item.category}
+                        </p>
 
-                            </h3>
-
-                            <p>
-
-                                ${item.category}
-
-                            </p>
-
-                            <strong>
-
-                                ${money(item.price)}
-
-                            </strong>
-
-                        </div>
-
-
-                        <div class="cart-quantity">
-
-                            <button
-                                onclick="
-                                    changeQuantity(
-                                        ${index},
-                                        -1
-                                    )
-                                ">
-
-                                −
-
-                            </button>
-
-
-                            <span>
-
-                                ${quantity}
-
-                            </span>
-
-
-                            <button
-                                onclick="
-                                    changeQuantity(
-                                        ${index},
-                                        1
-                                    )
-                                ">
-
-                                +
-
-                            </button>
-
-                        </div>
-
-
-                        <button
-                            class="remove-cart"
-                            onclick="
-                                removeFromCart(
-                                    ${index}
-                                )
-                            ">
-
-                            Remove
-
-                        </button>
-
+                        <strong>
+                            ${money(item.price)}
+                        </strong>
 
                     </div>
 
-                `;
 
-            }
-        ).join("");
+                    <div class="cart-quantity">
+
+                        <button
+                            onclick="changeQuantity(${index}, -1)">
+                            −
+                        </button>
+
+                        <span>
+                            ${quantity}
+                        </span>
+
+                        <button
+                            onclick="changeQuantity(${index}, 1)">
+                            +
+                        </button>
+
+                    </div>
+
+
+                    <button
+                        class="remove-cart"
+                        onclick="removeFromCart(${index})">
+
+                        Remove
+
+                    </button>
+
+                </div>
+
+            `;
+
+        }).join("");
 
 
     const totalElement =
-        document.getElementById(
-            "cartTotal"
-        );
+        document.getElementById("cartTotal");
 
 
     if (totalElement) {
@@ -1191,13 +1031,9 @@ function displayCart() {
 // QUANTITY
 // =====================================================
 
-function changeQuantity(
-    index,
-    amount
-) {
+function changeQuantity(index, amount) {
 
-    const cart =
-        getCart();
+    const cart = getCart();
 
 
     if (!cart[index]) {
@@ -1208,13 +1044,10 @@ function changeQuantity(
 
 
     cart[index].quantity =
-        (cart[index].quantity || 1) +
-        amount;
+        (cart[index].quantity || 1) + amount;
 
 
-    if (
-        cart[index].quantity <= 0
-    ) {
+    if (cart[index].quantity <= 0) {
 
         cart.splice(index, 1);
 
@@ -1229,19 +1062,15 @@ function changeQuantity(
 
 
 // =====================================================
-// REMOVE
+// REMOVE CART ITEM
 // =====================================================
 
 function removeFromCart(index) {
 
-    const cart =
-        getCart();
+    const cart = getCart();
 
 
-    cart.splice(
-        index,
-        1
-    );
+    cart.splice(index, 1);
 
 
     saveCart(cart);
@@ -1270,12 +1099,61 @@ function clearCart() {
 
 
 // =====================================================
-// START
+// BULK DEAL PRODUCT DROPDOWN
+// =====================================================
+
+function loadBulkProducts() {
+
+    const select =
+        document.getElementById("productSelect");
+
+
+    if (!select) {
+
+        return;
+
+    }
+
+
+    select.innerHTML = `
+        <option value="">
+            Choose a product
+        </option>
+    `;
+
+
+    products.forEach(function(product) {
+
+        const option =
+            document.createElement("option");
+
+
+        option.value =
+            product.id;
+
+
+        option.textContent =
+            product.icon +
+            " " +
+            product.name +
+            " - " +
+            money(product.price);
+
+
+        select.appendChild(option);
+
+    });
+
+}
+
+
+// =====================================================
+// PAGE LOAD
 // =====================================================
 
 document.addEventListener(
     "DOMContentLoaded",
-    function () {
+    function() {
 
         updateCartCount();
 
@@ -1284,6 +1162,8 @@ document.addEventListener(
         displaySingleProduct();
 
         displayCart();
+
+        loadBulkProducts();
 
     }
 );
