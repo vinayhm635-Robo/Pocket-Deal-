@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pocket Deal - Shop Smarter</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <div class="logo">
+        <span>PD</span> Pocket Deal
+    </div>
+
+    <div class="search-box">
+        <input id="searchInput" type="text" placeholder="Search products...">
+        <button onclick="searchProduct()">🔍</button>
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="products.html">Products</a>
+        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
+        <a href="login.html" class="login-btn">Login</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+
+        <p class="small-title">AI POWERED SHOPPING</p>
+
+        <h1>
+            Shop smarter.<br>
+            <span>Save better.</span>
+        </h1>
+
+        <p>
+            Discover amazing products, compare deals,
+            and find better prices with Pocket Deal.
+        </p>
+
+        <div class="hero-buttons">
+            <a href="products.html" class="primary-btn">
+                Explore Products
+            </a>
+
+            <a href="#categories" class="secondary-btn">
+                Browse Categories
+            </a>
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="deal-badge">
+            🔥 DEAL OF THE DAY
+        </div>
+
+        <div class="product-emoji">💻</div>
+
+        <h2>Premium Laptop</h2>
+
+        <p>Powerful performance for work & gaming</p>
+
+        <div class="price">₹59,999</div>
+
+        <div class="old-price">₹69,999</div>
+
+        <button onclick="addToCart('Premium Laptop',59999,'💻')">
+            Add to Cart
+        </button>
+
+    </div>
+
+</section>
+
+<section id="categories" class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="small-title">EXPLORE</p>
+            <h2>Shop by Category</h2>
+        </div>
+
+        <a href="products.html">View all →</a>
+
+    </div>
+
+    <div class="category-grid">
+
+        <div class="category-card" onclick="goCategory('laptop')">
+            <div class="category-icon">💻</div>
+            <h3>Laptops</h3>
+            <p>Latest technology</p>
+        </div>
+
+        <div class="category-card" onclick="goCategory('headphone')">
+            <div class="category-icon">🎧</div>
+            <h3>Headphones</h3>
+            <p>Music everywhere</p>
+        </div>
+
+        <div class="category-card" onclick="goCategory('shoe')">
+            <div class="category-icon">👟</div>
+            <h3>Shoes</h3>
+            <p>Style & comfort</p>
+        </div>
+
+        <div class="category-card" onclick="goCategory('phone')">
+            <div class="category-icon">📱</div>
+            <h3>Mobiles</h3>
+            <p>Smart technology</p>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="small-title">TRENDING</p>
+            <h2>Popular Deals</h2>
+        </div>
+
+        <a href="products.html">See all →</a>
+
+    </div>
+
+    <div class="product-grid">
+
+        <div class="product-card">
+
+            <div class="product-image">💻</div>
+
+            <span class="discount">20% OFF</span>
+
+            <h3>Premium Laptop</h3>
+
+            <p>Intel Core i5 • 16GB • 512GB</p>
+
+            <div class="rating">⭐ 4.6</div>
+
+            <strong>₹59,999</strong>
+
+            <button onclick="addToCart('Premium Laptop',59999,'💻')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <div class="product-image">🎧</div>
+
+            <span class="discount">30% OFF</span>
+
+            <h3>Wireless Headphones</h3>
+
+            <p>Noise cancellation • Bluetooth</p>
+
+            <div class="rating">⭐ 4.5</div>
+
+            <strong>₹2,499</strong>
+
+            <button onclick="addToCart('Wireless Headphones',2499,'🎧')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <div class="product-image">👟</div>
+
+            <span class="discount">25% OFF</span>
+
+            <h3>Running Shoes</h3>
+
+            <p>Lightweight • Comfortable</p>
+
+            <div class="rating">⭐ 4.4</div>
+
+            <strong>₹1,999</strong>
+
+            <button onclick="addToCart('Running Shoes',1999,'👟')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card">
+
+            <div class="product-image">📱</div>
+
+            <span class="discount">15% OFF</span>
+
+            <h3>Smartphone Pro</h3>
+
+            <p>5G • 128GB • AMOLED</p>
+
+            <div class="rating">⭐ 4.7</div>
+
+            <strong>₹24,999</strong>
+
+            <button onclick="addToCart('Smartphone Pro',24999,'📱')">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="why-section">
+
+    <div class="section-heading">
+
+        <div>
+            <p class="small-title">WHY POCKET DEAL?</p>
+            <h2>Shopping made smarter</h2>
+        </div>
+
+    </div>
+
+    <div class="features">
+
+        <div class="feature">
+            <div>🤖</div>
+            <h3>AI Shopping Assistant</h3>
+            <p>
+                Get intelligent recommendations based on your needs.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div>💰</div>
+            <h3>Better Deals</h3>
+            <p>
+                Discover attractive prices and discounts.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div>🔒</div>
+            <h3>Secure Checkout</h3>
+            <p>
+                Enjoy a simple and protected checkout experience.
+            </p>
+        </div>
+
+        <div class="feature">
+            <div>⚡</div>
+            <h3>Fast Shopping</h3>
+            <p>
+                Search, compare and purchase products quickly.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<footer>
+
+    <div class="logo">
+        <span>PD</span> Pocket Deal
+    </div>
+
+    <p>Shop smarter. Save better.</p>
+
+    <p>© 2026 Pocket Deal. All rights reserved.</p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
