@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Products - Pocket Deal</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <span>PD</span> Pocket Deal
+    </div>
+
+    <div class="search-box">
+
+        <input
+            id="productSearch"
+            type="text"
+            placeholder="Search products..."
+            onkeyup="filterProducts()"
+        >
+
+    </div>
+
+    <nav>
+
+        <a href="index.html">Home</a>
+
+        <a href="products.html">Products</a>
+
+        <a href="cart.html">
+            🛒 Cart <b id="cartCount">0</b>
+        </a>
+
+        <a href="login.html"
+           class="login-btn">
+            Login
+        </a>
+
+    </nav>
+
+</header>
+
+<main class="products-page">
+
+    <div class="page-title">
+
+        <p class="small-title">
+            POCKET DEAL STORE
+        </p>
+
+        <h1>Explore Products</h1>
+
+        <p>
+            Find the right product at the right price.
+        </p>
+
+    </div>
+
+    <div class="filter-bar">
+
+        <button onclick="filterCategory('all')">
+            All
+        </button>
+
+        <button onclick="filterCategory('laptop')">
+            💻 Laptops
+        </button>
+
+        <button onclick="filterCategory('headphone')">
+            🎧 Headphones
+        </button>
+
+        <button onclick="filterCategory('shoe')">
+            👟 Shoes
+        </button>
+
+        <button onclick="filterCategory('phone')">
+            📱 Mobiles
+        </button>
+
+    </div>
+
+    <div class="product-grid"
+         id="productList">
+
+        <div class="product-card"
+             data-category="laptop">
+
+            <div class="product-image">💻</div>
+
+            <span class="discount">
+                20% OFF
+            </span>
+
+            <h3>Premium Laptop</h3>
+
+            <p>Intel Core i5 • 16GB • 512GB</p>
+
+            <div class="rating">
+                ⭐ 4.6
+            </div>
+
+            <strong>₹59,999</strong>
+
+            <button
+                onclick="addToCart('Premium Laptop',59999,'💻')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="laptop">
+
+            <div class="product-image">🖥️</div>
+
+            <span class="discount">
+                18% OFF
+            </span>
+
+            <h3>Gaming Laptop</h3>
+
+            <p>Core i7 • RTX Graphics • 16GB</p>
+
+            <div class="rating">
+                ⭐ 4.8
+            </div>
+
+            <strong>₹74,999</strong>
+
+            <button
+                onclick="addToCart('Gaming Laptop',74999,'🖥️')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="headphone">
+
+            <div class="product-image">🎧</div>
+
+            <span class="discount">
+                30% OFF
+            </span>
+
+            <h3>Wireless Headphones</h3>
+
+            <p>ANC • Bluetooth 5.3</p>
+
+            <div class="rating">
+                ⭐ 4.5
+            </div>
+
+            <strong>₹2,499</strong>
+
+            <button
+                onclick="addToCart('Wireless Headphones',2499,'🎧')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="headphone">
+
+            <div class="product-image">🎵</div>
+
+            <span class="discount">
+                22% OFF
+            </span>
+
+            <h3>Premium Earbuds</h3>
+
+            <p>ANC • 40H Battery</p>
+
+            <div class="rating">
+                ⭐ 4.4
+            </div>
+
+            <strong>₹1,799</strong>
+
+            <button
+                onclick="addToCart('Premium Earbuds',1799,'🎵')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="shoe">
+
+            <div class="product-image">👟</div>
+
+            <span class="discount">
+                25% OFF
+            </span>
+
+            <h3>Running Shoes</h3>
+
+            <p>Lightweight • Sports</p>
+
+            <div class="rating">
+                ⭐ 4.4
+            </div>
+
+            <strong>₹1,999</strong>
+
+            <button
+                onclick="addToCart('Running Shoes',1999,'👟')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="shoe">
+
+            <div class="product-image">🥾</div>
+
+            <span class="discount">
+                15% OFF
+            </span>
+
+            <h3>Outdoor Shoes</h3>
+
+            <p>Durable • Comfortable</p>
+
+            <div class="rating">
+                ⭐ 4.3
+            </div>
+
+            <strong>₹2,799</strong>
+
+            <button
+                onclick="addToCart('Outdoor Shoes',2799,'🥾')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="phone">
+
+            <div class="product-image">📱</div>
+
+            <span class="discount">
+                15% OFF
+            </span>
+
+            <h3>Smartphone Pro</h3>
+
+            <p>5G • 128GB • AMOLED</p>
+
+            <div class="rating">
+                ⭐ 4.7
+            </div>
+
+            <strong>₹24,999</strong>
+
+            <button
+                onclick="addToCart('Smartphone Pro',24999,'📱')">
+                Add to Cart
+            </button>
+
+        </div>
+
+        <div class="product-card"
+             data-category="phone">
+
+            <div class="product-image">📲</div>
+
+            <span class="discount">
+                12% OFF
+            </span>
+
+            <h3>Smartphone Max</h3>
+
+            <p>5G • 256GB • 120Hz</p>
+
+            <div class="rating">
+                ⭐ 4.6
+            </div>
+
+            <strong>₹29,999</strong>
+
+            <button
+                onclick="addToCart('Smartphone Max',29999,'📲')">
+                Add to Cart
+            </button>
+
+        </div>
+
+    </div>
+
+</main>
+
+<script src="script.js"></script>
+
+</body>
+</html>
