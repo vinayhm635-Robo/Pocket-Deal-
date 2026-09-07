@@ -3,75 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Pocket Deal</title>
+    <title>Login - Pocket Deal</title>
     <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
 <header class="navbar">
-    <a href="index.html" class="logo">
-        <span>PD</span> Pocket Deal
-    </a>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="products.html">Shop</a>
-        <a href="cart.html">🛒 Cart <b id="cartCount">0</b></a>
-    </nav>
+    <a href="index.html" class="logo"><span>PD</span> Pocket Deal</a>
 </header>
 
-<main class="auth-page">
+<section class="auth-page">
 
-    <div class="auth-box">
+    <form class="auth-card" onsubmit="loginUser(event)">
 
-        <div class="auth-logo">PD</div>
+        <div class="logo-large">PD</div>
 
         <h1>Welcome Back</h1>
-        <p>Login to continue shopping.</p>
+        <p>Login to Pocket Deal</p>
 
-        <form onsubmit="loginUser(event)">
+        <input
+            id="loginEmail"
+            type="email"
+            placeholder="Email"
+            required
+        >
 
-            <label>Email</label>
+        <input
+            id="loginPassword"
+            type="password"
+            placeholder="Password"
+            required
+        >
 
-            <input
-                type="email"
-                id="loginEmail"
-                placeholder="Enter your email"
-                required
-            >
-
-            <label>Password</label>
-
-            <input
-                type="password"
-                id="loginPassword"
-                placeholder="Enter your password"
-                required
-            >
-
-            <button class="btn-primary full" type="submit">
-                Login
-            </button>
-
-        </form>
-
-        <div class="divider">
-            <span>OR</span>
-        </div>
-
-        <button class="google-btn" onclick="googleLogin()">
-            🔵 Continue with Google
+        <button class="btn-primary full">
+            Login
         </button>
 
-        <p class="demo-note">
-            Demo authentication. Real Google login requires Firebase
-            or another authentication service.
-        </p>
+        <div class="divider">OR</div>
 
-    </div>
+        <button
+            type="button"
+            class="google-btn"
+            onclick="googleLogin()"
+        >
+            Continue with Google
+        </button>
 
-</main>
+    </form>
+
+</section>
 
 <script src="script.js"></script>
 </body>
